@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1" uri="Dashboard.xfdl">
+  <Form id="Dashboard" width="1060" height="620" titletext="HỆ THỐNG ĐĂNG KÝ &amp; QUẢN LÝ HỌC TẬP (LMS)" onload="form_onload">
+    <Objects>
+      <Dataset id="ds_studentInfo">
+        <ColumnInfo>
+          <Column id="mssv" type="STRING" size="20"/>
+          <Column id="hoten" type="STRING" size="100"/>
+          <Column id="khoa" type="STRING" size="50"/>
+          <Column id="khoahocda" type="INT"/>
+          <Column id="khoahoctong" type="INT"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="mssv">19512345</Col>
+            <Col id="hoten">Lê Thị Thuỳ Tiên</Col>
+            <Col id="khoa">CNTT</Col>
+            <Col id="khoahocda">28</Col>
+            <Col id="khoahoctong">32</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_progressDegree">
+        <ColumnInfo>
+          <Column id="nganh" type="STRING" size="50"/>
+          <Column id="general" type="INT"/>
+          <Column id="major" type="INT"/>
+          <Column id="electives" type="INT"/>
+          <Column id="monluong" type="INT"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="nganh">Đã Đạt</Col>
+            <Col id="general">48</Col>
+            <Col id="major">22</Col>
+            <Col id="electives">10</Col>
+            <Col id="monluong">5</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_phoDiem">
+        <ColumnInfo>
+          <Column id="loai" type="STRING" size="5"/>
+          <Column id="phantram" type="INT"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="loai">A</Col>
+            <Col id="phantram">34</Col>
+          </Row>
+          <Row>
+            <Col id="loai">B</Col>
+            <Col id="phantram">35</Col>
+          </Row>
+          <Row>
+            <Col id="loai">C</Col>
+            <Col id="phantram">27</Col>
+          </Row>
+          <Row>
+            <Col id="loai">D</Col>
+            <Col id="phantram">5</Col>
+          </Row>
+          <Row>
+            <Col id="loai">F</Col>
+            <Col id="phantram">5</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_hoatDong">
+        <ColumnInfo>
+          <Column id="col1" type="STRING" size="200"/>
+          <Column id="col2" type="STRING" size="200"/>
+          <Column id="col3" type="STRING" size="200"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="col1">Cập nhật điểm môn Tin Đại Cương</Col>
+            <Col id="col2">SV Nguyễn Thị B nộp đơn bảo lưu</Col>
+            <Col id="col3">Cập nhật điểm Lớp CNTT K15A</Col>
+          </Row>
+          <Row>
+            <Col id="col1">Cập nhật điểm môn Tin Đại Cương</Col>
+            <Col id="col2">SV Trần Văn A Lớp CNTT K15A</Col>
+            <Col id="col3">SV Nguyễn Thị Lớp CNTT K15A</Col>
+          </Row>
+          <Row>
+            <Col id="col1">Nộp đơn đăng ký thực tập</Col>
+            <Col id="col2">SV Nguyễn Thị B đăng ký môn Tin Cương</Col>
+            <Col id="col3">Cập nhật điểm Lớp CNTT K15A</Col>
+          </Row>
+          <Row>
+            <Col id="col1">Thông báo lịch thi học kỳ</Col>
+            <Col id="col2">SV Trần Văn A đăng ký môn Tin Cương</Col>
+            <Col id="col3">SV Nguyễn Thị B đăng ký môn Tin Học Đại Cương</Col>
+          </Row>
+          <Row>
+            <Col id="col1">Thông báo lịch thi học kỳ</Col>
+            <Col id="col2">Cập nhật điểm Lớp CNTT K15A</Col>
+            <Col id="col3">SV Nguyễn Thị B nộp đơn bảo lưu</Col>
+          </Row>
+          <Row>
+            <Col id="col1">Cập nhật tín chỉ mới</Col>
+            <Col id="col2">Cập nhật điểm Lớp CNTT K15A</Col>
+            <Col id="col3">Cập nhật điểm Lớp CNTT K15A</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/* ============================================================
+   SỰ KIỆN FORM LOAD - KHỞI TẠO BINDING DỮ LIỆU THỦ CÔNG
+   ============================================================ */
+this.form_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo)
+{
+    var row = 0;
+    var ds = this.ds_studentInfo;
+
+    // Đổ dữ liệu từ Dataset vào các ô Text
+    var mssvVal = ds.getColumn(row, "mssv");
+    var nameVal = ds.getColumn(row, "hoten");
+    var khoaVal = ds.getColumn(row, "khoa");
+    var courseDa = ds.getColumn(row, "khoahocda");
+    var courseTong = ds.getColumn(row, "khoahoctong");
+
+    var targetForm = this.div_content.form.tab_main.tabpage_dashboard.form;
+
+    targetForm.div_studentCard.form.st_mssv.set_text("MSSV: " + mssvVal);
+    targetForm.div_studentCard.form.st_tenValue.set_text(nameVal);
+    targetForm.div_studentCard.form.st_khoa.set_text("Khoa: " + khoaVal);
+    targetForm.div_stat1.form.st_stat1Value.set_text(courseDa + "/" + courseTong);
+};
+
+/* ============================================================
+   SỰ KIỆN CLICK VÀO MENU CÂY (TREE NAVIGATION)
+   ============================================================ */
+this.div_sidebar_grd_treeMenu_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+    var ds = this.ds_menu;
+    var nRow = e.row;
+    
+    // Lấy tên màn hình và URL form con từ node vừa bấm
+    var sMenuName = ds.getColumn(nRow, "MENU_NM");
+    var sFormUrl  = ds.getColumn(nRow, "FORM_URL");
+    
+    // Kiểm tra nếu là mục con và có liên kết Form thì mới điều hướng
+    if (sFormUrl) {
+        // Gọi hàm điều hướng hoặc alert để test logic dự án
+        this.alert("Đang mở trang: " + sMenuName + "\nĐường dẫn: " + sFormUrl);
+        
+        // Trong trường hợp muốn đổi form con vào div_content:
+        // this.div_content.set_url(sFormUrl);
+    }
+};
+this.div_content_tab_main_tabpage_dashboard_div_stat2_div_stat2Icon_img_bookIcon_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
+    <Layouts>
+      <Layout height="620" width="1060">
+        <Div id="div_header" left="0" top="0" width="1060" height="40" background="#1a5db5">
+          <Layouts>
+            <Layout>
+              <Static id="st_menu" left="12" top="9" width="22" height="22" text="☰" font="bold 16px Arial" color="white" cursor="hand"/>
+              <Static id="st_title" left="38" top="8" width="320" height="24" text="HỆ THỐNG ĐĂNG KÝ &amp; QUẢN LÝ HỌC TẬP (LMS)" font="bold 11px Arial" color="white" padding="0px 0px 0px 10px"/>
+              <Static id="st_breadcrumb" left="370" top="11" width="200" height="18" text="Trang chủ › Dashboard" font="11px Arial" color="#c8daf5"/>
+              <Static id="st_icon_bell" left="960" top="9" width="22" height="22" text="🔔" font="14px Arial" color="white" cursor="hand" textAlign="center"/>
+              <Static id="st_icon_user" left="990" top="9" width="22" height="22" text="👤" font="14px Arial" color="white" cursor="hand" textAlign="center"/>
+              <Static id="st_icon_setting" left="1020" top="9" width="22" height="22" text="⚙" font="14px Arial" color="white" cursor="hand" textAlign="center"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_sidebar" left="0" top="40" width="170" bottom="0" background="white" border="0px none, 1px solid #ddd, 0px none, 0px none">
+          <Layouts>
+            <Layout>
+              <Static id="st_sidebarHeader" left="0" top="0" width="170" height="30" text="Trang" font="bold 11px Arial" color="#444444" background="#e8e8e8" border="0,0,1px solid #ccc,0" padding="0px 0px 0px 15px"/>
+              <Static id="st_menu_dashboard" left="0" top="30" width="170" height="35" text="  ▣  Dashboard" font="11px Arial" color="white" background="#1a5db5" cursor="hand" padding="0px 0px 0px 15px"/>
+              <Static id="line_v" left="15" top="65" width="1" height="123" background="#aaaaaa"/>
+              <Static id="line_h1" left="15" top="82" width="15" height="1" background="#aaaaaa"/>
+              <Static id="st_menu_sinhvien" left="30" top="65" width="140" height="35" text="👤 Quản lý Sinh viên" font="11px Arial" color="#333333" cursor="hand" padding="0px 0px 0px 5px" onmouseover="fn_menuHover(this,true)" onmouseout="fn_menuHover(this,false)" onclick="fn_menuClick('QuanLySinhVien')"/>
+              <Static id="line_h2" left="15" top="117" width="15" height="1" background="#aaaaaa"/>
+              <Static id="st_menu_dangky" left="30" top="100" width="140" height="35" text="📋 Đăng ký Môn học" font="11px Arial" color="#333333" cursor="hand" padding="0px 0px 0px 5px" onmouseover="fn_menuHover(this,true)" onmouseout="fn_menuHover(this,false)" onclick="fn_menuClick('DangKyMonHoc')"/>
+              <Static id="line_h3" left="15" top="152" width="15" height="1" background="#aaaaaa"/>
+              <Static id="st_menu_diem" left="30" top="135" width="140" height="35" text="📊 Quản lý Điểm" font="11px Arial" color="#333333" cursor="hand" padding="0px 0px 0px 5px" onmouseover="fn_menuHover(this,true)" onmouseout="fn_menuHover(this,false)" onclick="fn_menuClick('QuanLyDiem')"/>
+              <Static id="line_h4" left="15" top="187" width="15" height="1" background="#aaaaaa"/>
+              <Static id="st_menu_thongke" left="30" top="170" width="140" height="35" text="📈 Thống kê &amp; Báo cáo" font="11px Arial" color="#333333" cursor="hand" padding="0px 0px 0px 5px" onmouseover="fn_menuHover(this,true)" onmouseout="fn_menuHover(this,false)" onclick="fn_menuClick('ThongKe')"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_content" left="170" top="40" right="0" bottom="0" background="#f0f2f5">
+          <Layouts>
+            <Layout>
+              <Tab id="tab_main" left="0" top="0" right="0" bottom="0" tabposition="top" tabheight="32" background="#f0f2f5">
+                <Tabpages>
+                  <Tabpage id="tabpage_dashboard" text="Bảng Điều Khiển Tổng Quan (Dashboard)">
+                    <Layouts>
+                      <Layout>
+                        <Div id="div_studentCard" left="10" top="10" width="260" height="85" background="white" border="1px solid #dde3ec" borderRadius="4px">
+                          <Layouts>
+                            <Layout>
+                              <ImageViewer id="img_avatar" left="12" top="10" width="55" height="65" border="1px solid #ccc" background="#e1e1e1" stretch="fit"/>
+                              <Static id="st_mssv" left="80" top="10" width="170" height="18" text="MSSV: 19512345" font="11px Arial" color="#555555"/>
+                              <Static id="st_tenLabel" left="80" top="28" width="30" height="18" text="Tên:" font="11px Arial" color="#333333"/>
+                              <Static id="st_tenValue" left="110" top="28" width="140" height="18" text="Lê Thị Thuỳ Tiên" font="bold 12px Arial" color="#1a1a1a"/>
+                              <Static id="st_khoa" left="80" top="48" width="170" height="18" text="Khoa: CNTT" font="11px Arial" color="#666666"/>
+                            </Layout>
+                          </Layouts>
+                        </Div>
+                        <Div id="div_stat1" left="280" top="10" width="280" height="85" background="white" border="1px solid #dde3ec" borderRadius="4px">
+                          <Layouts>
+                            <Layout>
+                              <Div id="div_stat1Icon" left="15" top="18" width="46" height="46" background="#1a5db5" borderRadius="23px">
+                                <Layouts>
+                                  <Layout>
+                                    <Static id="st_icon1" left="0" top="0" right="0" bottom="0" text="🎓" font="20px Arial" color="white" textAlign="center" verticalAlign="middle"/>
+                                  </Layout>
+                                </Layouts>
+                              </Div>
+                              <Static id="st_stat1Label" left="75" top="12" width="190" height="16" text="Số Lượng Khóa Học Đã Học:" font="11px Arial" color="#666666"/>
+                              <Static id="st_stat1Value" left="75" top="30" width="190" height="28" text="28/32" font="bold 22px Arial" color="#1a5db5"/>
+                              <Static id="st_stat1Wave" left="75" top="58" width="190" height="15" text="〰〰〰〰" font="11px Arial" color="#88aadd"/>
+                            </Layout>
+                          </Layouts>
+                        </Div>
+                        <Div id="div_stat2" left="570" top="10" right="10" height="85" background="white" border="1px solid #dde3ec" borderRadius="4px">
+                          <Layouts>
+                            <Layout>
+                              <Div id="div_stat2Icon" left="15" top="18" width="46" height="46" background="#1a7db5" borderRadius="23px">
+                                <Layouts>
+                                  <Layout>
+                                    <Static id="st_icon2" left="0" top="0" right="0" bottom="0" text="📋" font="18px Arial" color="white" textAlign="center" verticalAlign="middle"/>
+                                  </Layout>
+                                </Layouts>
+                              </Div>
+                              <Static id="st_stat2Label" left="75" top="12" width="200" height="16" text="Chi Tiết Khóa Học:" font="bold 11px Arial" color="#555555"/>
+                              <Static id="st_stat2Desc" left="75" top="32" right="15" bottom="10" text="Cần lưu ý một số khóa học chưa hoàn thành và hoàn thiện hồ sơ." font="11px Arial" color="#444444" wordWrap="char"/>
+                            </Layout>
+                          </Layouts>
+                        </Div>
+                        <Div id="div_barChart" left="10" top="105" width="600" height="240" background="white" border="1px solid #dde3ec" borderRadius="4px">
+                          <Layouts>
+                            <Layout>
+                              <Static id="st_barTitle" left="15" top="10" width="450" height="20" text="Progress to Degree – Số Tín Chỉ Đã Đạt" font="bold 12px Arial" color="#333333"/>
+                              <Static id="st_barRefresh" right="35" top="10" width="16" height="20" text="↻" font="14px Arial" color="#888888" cursor="hand" textAlign="center"/>
+                              <Static id="st_barMore" right="15" top="10" width="16" height="20" text="⋯" font="14px Arial" color="#888888" cursor="hand" textAlign="center"/>
+                              <Line id="line_barSep" left="15" top="35" right="15" height="1" background="#eeeeee"/>
+                              <BasicChart id="chart_progress" left="15" top="45" right="15" bottom="15" binddataset="ds_progressDegree" categorycolumn="nganh">
+                                <Contents><![CDATA[{
+                                  "legend": { "visible": true, "position": "top" },
+                                  "valueaxes": [{ "id": "valueaxis0", "min": 0, "max": 60 }],
+                                  "series": [
+                                    { "id": "series0", "title": "General", "valuecolumn": "bind:general", "barvisible": true, "itembackground": "#3b82f6" },
+                                    { "id": "series1", "title": "Major", "valuecolumn": "bind:major", "barvisible": true, "itembackground": "#22c55e" },
+                                    { "id": "series2", "title": "Electives", "valuecolumn": "bind:electives", "barvisible": true, "itembackground": "#f97316" },
+                                    { "id": "series3", "title": "Môn Lương", "valuecolumn": "bind:monluong", "barvisible": true, "itembackground": "#ef4444" }
+                                  ]
+                                }]]></Contents>
+                              </BasicChart>
+                            </Layout>
+                          </Layouts>
+                        </Div>
+                        <Div id="div_pieChart" left="620" top="105" right="10" height="240" background="white" border="1px solid #dde3ec" borderRadius="4px">
+                          <Layouts>
+                            <Layout>
+                              <Static id="st_pieTitle" left="15" top="10" right="60" height="20" text="Phổ Điểm Sinh Viên" font="bold 12px Arial" color="#333333"/>
+                              <Static id="st_pieRefresh" right="35" top="10" width="16" height="20" text="↻" font="14px Arial" color="#888888" cursor="hand" textAlign="center"/>
+                              <Static id="st_pieMore" right="15" top="10" width="16" height="20" text="⋯" font="14px Arial" color="#888888" cursor="hand" textAlign="center"/>
+                              <Line id="line_pieSep" left="15" top="35" right="15" height="1" background="#eeeeee"/>
+                              <PieChart id="chart_phodiemDonut" left="10" top="45" right="10" bottom="10" binddataset="ds_phoDiem" categorycolumn="loai">
+                                <Contents><![CDATA[{
+                                  "legend": { "visible": true, "position": "bottom" },
+                                  "series": [{
+                                    "id": "series0",
+                                    "valuecolumn": "bind:phantram",
+                                    "innerradius": "50",
+                                    "labelvisible": true,
+                                    "colorset": ["#2563eb", "#22c55e", "#f97316", "#facc15", "#ef4444"]
+                                  }]
+                                }]]></Contents>
+                              </PieChart>
+                            </Layout>
+                          </Layouts>
+                        </Div>
+                        <Div id="div_activity" left="10" top="355" right="10" bottom="10" background="white" border="1px solid #dde3ec" borderRadius="4px">
+                          <Layouts>
+                            <Layout>
+                              <Static id="st_actTitle" left="15" top="10" width="500" height="20" text="Hoạt Động Gần Đây" font="bold 12px Arial" color="#333333"/>
+                              <Static id="st_actRefresh" right="35" top="10" width="16" height="20" text="↻" font="14px Arial" color="#888888" cursor="hand" textAlign="center"/>
+                              <Static id="st_actMore" right="15" top="10" width="16" height="20" text="⋯" font="14px Arial" color="#888888" cursor="hand" textAlign="center"/>
+                              <Line id="line_actSep" left="15" top="35" right="15" height="1" background="#eeeeee"/>
+                              <Grid id="grid_activity" left="15" top="45" right="15" bottom="10" binddataset="ds_hoatDong" autofittype="col" border="0px none">
+                                <Formats>
+                                  <Format id="default">
+                                    <Columns>
+                                      <Column size="280"/>
+                                      <Column size="280"/>
+                                      <Column size="280"/>
+                                    </Columns>
+                                    <Rows>
+                                      <Row size="32"/>
+                                    </Rows>
+                                    <Band id="body">
+                                      <Cell text="bind:col1" font="11px Arial" color="#1a5db5" padding="0px 0px 0px 10px" border="0px none, 0px none, 1px solid #f0f0f0, 0px none"/>
+                                      <Cell col="1" text="bind:col2" font="11px Arial" color="#333333" padding="0px 0px 0px 10px" border="0px none, 0px none, 1px solid #f0f0f0, 1px solid #eeeeee"/>
+                                      <Cell col="2" text="bind:col3" font="11px Arial" color="#666666" padding="0px 0px 0px 10px" border="0px none, 0px none, 1px solid #f0f0f0, 1px solid #eeeeee"/>
+                                    </Band>
+                                  </Format>
+                                </Formats>
+                              </Grid>
+                            </Layout>
+                          </Layouts>
+                        </Div>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                  <Tabpage id="tabpage_ketqua" text="Kết Quả Học Tập Chi Tiết">
+                    <Layouts>
+                      <Layout>
+                        <Static id="st_ketquaHolder" left="0" top="0" right="0" bottom="0" text="[Nội dung Kết Quả Học Tập Chi Tiết]" font="12px Arial" color="#888888" textAlign="center" verticalAlign="middle"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                </Tabpages>
+              </Tab>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

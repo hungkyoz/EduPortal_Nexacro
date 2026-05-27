@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="LoginForm" width="400" height="450" titletext="Login">
+    <Layouts>
+      <Layout height="450" width="400">
+        <Static id="sta_title" taborder="0" text="Please login" left="50" top="50" width="200" height="40" font="bold 20px/normal 'Arial'"/>
+        <Edit id="edt_email" taborder="1" left="50" top="110" width="300" height="40" displaynulltext="Email address"/>
+        <Static id="sta_email_err" taborder="2" text="Please enter a valid email address." left="50" top="155" width="300" height="20" color="red" visible="false" font="12px/normal 'Arial'"/>
+        <Edit id="edt_password" taborder="3" left="50" top="180" width="300" height="40" displaynulltext="Password" password="true"/>
+        <Static id="sta_pw_err" taborder="4" text="Please enter a valid password with minium 10 characters." left="50" top="225" width="300" height="20" color="red" visible="false" font="12px/normal 'Arial'"/>
+        <CheckBox id="chk_remember" taborder="5" text="Remember me" left="50" top="260" width="150" height="20"/>
+        <Button id="btn_login" taborder="6" text="Login" left="50" top="300" width="300" height="40" onclick="btn_login_onclick" background="#428bca" color="white" font="bold 14px/normal 'Arial'"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    // Lấy giá trị từ các component Edit
+    var email = this.edt_email.value;
+    var password = this.edt_password.value;
+    
+    // Reset trạng thái hiển thị của các thông báo lỗi (ẩn đi trước khi kiểm tra)
+    this.sta_email_err.set_visible(false);
+    this.sta_pw_err.set_visible(false);
+
+    var isValid = true;
+
+    // 1. Validate Email: Kiểm tra định dạng xxx@gmail.com
+    var emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/; 
+    if (!email || !emailRegex.test(email)) {
+        this.sta_email_err.set_visible(true); 
+        this.edt_email.setFocus();
+        isValid = false;
+    }
+
+    // 2. Validate Password: Yêu cầu tối thiểu 10 ký tự
+    if (!password || password.length < 10) {
+        this.sta_pw_err.set_visible(true); 
+        if(isValid) this.edt_password.setFocus(); 
+        isValid = false;
+    }
+
+    // Nếu dữ liệu không hợp lệ thì dừng hàm tại đây
+    if(!isValid) return;
+
+    // 3. Logic Đăng nhập
+    if (email == "student@gmail.com" && password == "Student123456!") {
+        // Chuyển hướng sang màn hình Dashboard (Tùy thuộc vào cấu trúc frame của bạn)
+        // Ví dụ: this.getOwnerFrame().set_formurl("Base::Dashboard.xfdl");
+        
+        this.alert("Đăng nhập thành công! Chuyển hướng sang Dashboard..."); 
+    } else {
+        // Thông báo sai thông tin nếu không khớp tài khoản yêu cầu
+        this.alert("wrong Email or Password, please check again");
+    }
+};]]></Script>
+  </Form>
+</FDL>
