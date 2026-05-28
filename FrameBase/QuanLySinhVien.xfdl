@@ -4,50 +4,30 @@
     <Objects>
       <Dataset id="ds_sinhVien">
         <ColumnInfo>
-          <Column id="manhanvien" type="STRING" size="20"/>
-          <Column id="sothe" type="STRING" size="20"/>
-          <Column id="sohoso" type="STRING" size="20"/>
-          <Column id="muchoso" type="INT"/>
-          <Column id="ho" type="STRING" size="50"/>
-          <Column id="ten_dem" type="STRING" size="50"/>
-          <Column id="ten" type="STRING" size="50"/>
-          <Column id="tengoi" type="STRING" size="100"/>
-          <Column id="gioitinh" type="STRING" size="10"/>
-          <Column id="ngaysinh" type="STRING" size="20"/>
-          <Column id="honnhan" type="STRING" size="20"/>
-          <Column id="xuatthan" type="STRING" size="50"/>
-          <Column id="dantoc" type="STRING" size="50"/>
-          <Column id="tongiao" type="STRING" size="50"/>
-          <Column id="quoctich" type="STRING" size="50"/>
-          <Column id="cmt" type="STRING" size="20"/>
-          <Column id="ngaycmt" type="STRING" size="20"/>
-          <Column id="noicap" type="STRING" size="100"/>
-          <Column id="sohochieu" type="STRING" size="20"/>
-          <Column id="ngaycap" type="STRING" size="20"/>
-          <Column id="email" type="STRING" size="100"/>
-          <Column id="didong" type="STRING" size="20"/>
-          <Column id="avatar" type="STRING" size="200"/>
+          <Column id="MA_NHAN_VIEN" type="STRING" size="20"/>
+          <Column id="SO_THE" type="STRING" size="20"/>
+          <Column id="SO_HO_SO" type="STRING" size="20"/>
+          <Column id="MUC_HO_SO" type="INT"/>
+          <Column id="HO" type="STRING" size="50"/>
+          <Column id="TEN_DEM" type="STRING" size="50"/>
+          <Column id="TEN" type="STRING" size="50"/>
+          <Column id="TEN_GOI_KHAC" type="STRING" size="100"/>
+          <Column id="GIOI_TINH" type="STRING" size="10"/>
+          <Column id="NGAY_SINH" type="STRING" size="20"/>
+          <Column id="HON_NHAN" type="STRING" size="20"/>
+          <Column id="XUAT_THAN" type="STRING" size="50"/>
+          <Column id="DAN_TOC" type="STRING" size="50"/>
+          <Column id="TON_GIAO" type="STRING" size="50"/>
+          <Column id="QUOC_TICH" type="STRING" size="50"/>
+          <Column id="CMT" type="STRING" size="20"/>
+          <Column id="NGAY_CMT" type="STRING" size="20"/>
+          <Column id="NOI_CAP" type="STRING" size="100"/>
+          <Column id="SO_HO_CHIEU" type="STRING" size="20"/>
+          <Column id="NGAY_CAP_HC" type="STRING" size="20"/>
+          <Column id="AVATAR_URL" type="STRING" size="200"/>
+          <Column id="EMAIL" type="STRING" size="100"/>
+          <Column id="DI_DONG" type="STRING" size="20"/>
         </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="manhanvien">0002</Col>
-            <Col id="sothe">00002</Col>
-            <Col id="muchoso">0</Col>
-            <Col id="ho">Đinh</Col>
-            <Col id="ten_dem">Thị</Col>
-            <Col id="ten">Hương</Col>
-            <Col id="gioitinh">Nữ</Col>
-            <Col id="ngaysinh">02/01/1989</Col>
-            <Col id="honnhan">Độc thân</Col>
-            <Col id="xuatthan">Trí thức</Col>
-            <Col id="dantoc">Kinh</Col>
-            <Col id="tongiao">Không</Col>
-            <Col id="quoctich">Việt Nam</Col>
-            <Col id="cmt">060586034</Col>
-            <Col id="ngaycmt">10/10/2009</Col>
-            <Col id="noicap">Lào Cai</Col>
-          </Row>
-        </Rows>
       </Dataset>
       <Dataset id="ds_gioitinh">
         <ColumnInfo>
@@ -56,11 +36,11 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="code">Nam</Col>
+            <Col id="code">M</Col>
             <Col id="name">Nam</Col>
           </Row>
           <Row>
-            <Col id="code">Nữ</Col>
+            <Col id="code">F</Col>
             <Col id="name">Nữ</Col>
           </Row>
         </Rows>
@@ -72,16 +52,12 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="code">Độc thân</Col>
+            <Col id="code">01</Col>
             <Col id="name">Độc thân</Col>
           </Row>
           <Row>
-            <Col id="code">Đã kết hôn</Col>
+            <Col id="code">02</Col>
             <Col id="name">Đã kết hôn</Col>
-          </Row>
-          <Row>
-            <Col id="code">Ly hôn</Col>
-            <Col id="name">Ly hôn</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -92,16 +68,12 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="code">Trí thức</Col>
-            <Col id="name">Trí thức</Col>
-          </Row>
-          <Row>
-            <Col id="code">Nông dân</Col>
+            <Col id="code">01</Col>
             <Col id="name">Nông dân</Col>
           </Row>
           <Row>
-            <Col id="code">Công nhân</Col>
-            <Col id="name">Công nhân</Col>
+            <Col id="code">02</Col>
+            <Col id="name">Trí thức</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -112,20 +84,12 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="code">Kinh</Col>
+            <Col id="code">01</Col>
             <Col id="name">Kinh</Col>
           </Row>
           <Row>
-            <Col id="code">Tày</Col>
+            <Col id="code">02</Col>
             <Col id="name">Tày</Col>
-          </Row>
-          <Row>
-            <Col id="code">Mường</Col>
-            <Col id="name">Mường</Col>
-          </Row>
-          <Row>
-            <Col id="code">Khmer</Col>
-            <Col id="name">Khmer</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -136,16 +100,12 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="code">Không</Col>
+            <Col id="code">00</Col>
             <Col id="name">Không</Col>
           </Row>
           <Row>
-            <Col id="code">Phật giáo</Col>
+            <Col id="code">01</Col>
             <Col id="name">Phật giáo</Col>
-          </Row>
-          <Row>
-            <Col id="code">Thiên Chúa</Col>
-            <Col id="name">Thiên Chúa</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -156,11 +116,11 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="code">Việt Nam</Col>
+            <Col id="code">VN</Col>
             <Col id="name">Việt Nam</Col>
           </Row>
           <Row>
-            <Col id="code">Khác</Col>
+            <Col id="code">OT</Col>
             <Col id="name">Khác</Col>
           </Row>
         </Rows>
@@ -172,103 +132,92 @@
         </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="code">Lào Cai</Col>
+            <Col id="code">24</Col>
             <Col id="name">Lào Cai</Col>
           </Row>
           <Row>
-            <Col id="code">Hà Nội</Col>
+            <Col id="code">01</Col>
             <Col id="name">Hà Nội</Col>
-          </Row>
-          <Row>
-            <Col id="code">Hồ Chí Minh</Col>
-            <Col id="name">Hồ Chí Minh</Col>
-          </Row>
-          <Row>
-            <Col id="code">Đà Nẵng</Col>
-            <Col id="name">Đà Nẵng</Col>
           </Row>
         </Rows>
       </Dataset>
     </Objects>
     <Layouts>
       <Layout height="650" width="1060">
-        <Div id="div_scroll" left="0" top="0" width="1060" height="650" background="white">
+        <Div id="div_scroll" left="0" top="0" right="0" bottom="0" background="transparent">
           <Layouts>
             <Layout>
-              <Div id="div_left" left="30" top="10" width="730" height="600" background="white" border="1px solid #dde3ec" borderRadius="6px" text="">
+              <Div id="div_left" left="30" top="20" width="730" height="600" background="white" border="1px solid #dde3ec" borderRadius="6px">
                 <Layouts>
                   <Layout>
-                    <Static id="st_manv_lbl" left="20" top="20" width="90" height="32" text="Mã nhân viên *" usedecorate="true" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Edit id="edt_manhanvien" left="120" top="20" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="manhanvien"/>
-                    <Static id="st_sothe_lbl" left="380" top="20" width="90" height="32" text="Số thẻ" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Edit id="edt_sothe" left="480" top="20" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="sothe"/>
-                    <Static id="st_sohs_lbl" left="20" top="65" width="90" height="32" text="Số hồ sơ" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Edit id="edt_sohoso" left="120" top="65" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="sohoso"/>
-                    <Static id="st_muchs_lbl" left="380" top="65" width="90" height="32" text="Mức hồ sơ" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Spin id="spin_muchoso" left="480" top="65" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="muchoso"/>
-                    <Static id="st_hovaten_lbl" left="20" top="110" width="90" height="32" text="Họ và tên *" usedecorate="true" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Edit id="edt_ho" left="120" top="110" width="150" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="ho"/>
-                    <Edit id="edt_tendem" left="280" top="110" width="150" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="ten_dem"/>
-                    <Edit id="edt_ten" left="440" top="110" width="270" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="ten"/>
-                    <Static id="st_tengoi_lbl" left="20" top="155" width="90" height="32" text="Tên gọi khác" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Edit id="edt_tengoi" left="120" top="155" width="590" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="tengoi"/>
-                    <Static id="st_gt_lbl" left="20" top="200" width="90" height="32" text="Giới tính *" usedecorate="true" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Combo id="cmb_gioitinh" left="120" top="200" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="gioitinh" innerdataset="ds_gioitinh" codecolumn="code" displaycolumn="name"/>
-                    <Static id="st_ns_lbl" left="380" top="200" width="90" height="32" text="Ngày sinh *" usedecorate="true" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Calendar id="cal_ngaysinh" left="480" top="200" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="ngaysinh"/>
-                    <Static id="st_hn_lbl" left="20" top="245" width="90" height="32" text="Hôn nhân" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Combo id="cmb_honnhan" left="120" top="245" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="honnhan" innerdataset="ds_honnhan" codecolumn="code" displaycolumn="name"/>
-                    <Static id="st_xt_lbl" left="380" top="245" width="90" height="32" text="Xuất thân" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Combo id="cmb_xuatthan" left="480" top="245" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="xuatthan" innerdataset="ds_xuatthan" codecolumn="code" displaycolumn="name"/>
-                    <Static id="st_dt_lbl" left="20" top="290" width="90" height="32" text="Dân tộc" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Combo id="cmb_dantoc" left="120" top="290" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="dantoc" innerdataset="ds_dantoc" codecolumn="code" displaycolumn="name"/>
-                    <Static id="st_tg_lbl" left="380" top="290" width="90" height="32" text="Tôn giáo" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Combo id="cmb_tongiao" left="480" top="290" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="tongiao" innerdataset="ds_tongiao" codecolumn="code" displaycolumn="name"/>
-                    <Line id="line_sep" left="20" top="335" right="20" height="1" border="1px dashed #c8d0dc"/>
-                    <Static id="st_qt_lbl" left="20" top="350" width="90" height="32" text="Quốc tịch" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Combo id="cmb_quoctich" left="120" top="350" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="quoctich" innerdataset="ds_quoctich" codecolumn="code" displaycolumn="name"/>
-                    <Static id="st_cmt_lbl" left="380" top="350" width="90" height="32" text="CMND/CCCD" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Edit id="edt_cmt" left="480" top="350" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="cmt"/>
-                    <Static id="st_ngaycmt_lbl" left="20" top="395" width="90" height="32" text="Ngày cấp" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Calendar id="cal_ngaycmt" left="120" top="395" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="ngaycmt"/>
-                    <Static id="st_noicap_lbl" left="380" top="395" width="90" height="32" text="Nơi cấp" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Combo id="cmb_noicap" left="480" top="395" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="noicap" innerdataset="ds_noicap" codecolumn="code" displaycolumn="name"/>
-                    <Static id="st_shc_lbl" left="20" top="440" width="90" height="32" text="Số hộ chiếu" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Edit id="edt_sohochieu" left="120" top="440" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="sohochieu"/>
-                    <Static id="st_ngaycap_lbl" left="380" top="440" width="90" height="32" text="Ngày cấp" font="12px Arial" color="#333333" textAlign="left"/>
-                    <Calendar id="cal_ngaycap" left="480" top="440" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="ngaycap"/>
+                    <Static id="st_mainTitle" left="20" top="20" width="160" height="30" text="THÔNG TIN CƠ BẢN" font="bold 13px Arial" color="#1a5db5" border="0px none, 0px none, 2px solid #1a5db5, 0px none" padding="0px 0px 0px 5px"/>
+                    <Static id="st_manv_lbl" left="20" top="70" width="90" height="32" text="Mã nhân viên *" usedecorate="true" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Edit id="edt_manhanvien" left="120" top="70" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="MA_NHAN_VIEN" readonly="true" background="#f4f5f9"/>
+                    <Static id="st_sothe_lbl" left="380" top="70" width="90" height="32" text="Số thẻ" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Edit id="edt_sothe" left="480" top="70" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="SO_THE"/>
+                    <Static id="st_sohs_lbl" left="20" top="115" width="90" height="32" text="Số hồ sơ" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Edit id="edt_sohoso" left="120" top="115" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="SO_HO_SO"/>
+                    <Static id="st_muchs_lbl" left="380" top="115" width="90" height="32" text="Mức hồ sơ" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Spin id="spin_muchoso" left="480" top="115" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="MUC_HO_SO"/>
+                    <Static id="st_hovaten_lbl" left="20" top="160" width="90" height="32" text="Họ và tên *" usedecorate="true" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Edit id="edt_ho" left="120" top="160" width="150" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="HO"/>
+                    <Edit id="edt_tendem" left="280" top="160" width="150" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="TEN_DEM"/>
+                    <Edit id="edt_ten" left="440" top="160" width="270" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="TEN"/>
+                    <Static id="st_tengoi_lbl" left="20" top="205" width="90" height="32" text="Tên gọi khác" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Edit id="edt_tengoi" left="120" top="205" width="590" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="TEN_GOI_KHAC"/>
+                    <Static id="st_gt_lbl" left="20" top="250" width="90" height="32" text="Giới tính *" usedecorate="true" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Combo id="cmb_gioitinh" left="120" top="250" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="GIOI_TINH" innerdataset="ds_gioitinh" codecolumn="code" displaycolumn="name" readonly="true" background="#f4f5f9"/>
+                    <Static id="st_ns_lbl" left="380" top="250" width="90" height="32" text="Ngày sinh *" usedecorate="true" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Calendar id="cal_ngaysinh" left="480" top="250" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="NGAY_SINH"/>
+                    <Static id="st_hn_lbl" left="20" top="295" width="90" height="32" text="Hôn nhân" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Combo id="cmb_honnhan" left="120" top="295" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="HON_NHAN" innerdataset="ds_honnhan" codecolumn="code" displaycolumn="name"/>
+                    <Static id="st_xt_lbl" left="380" top="295" width="90" height="32" text="Xuất thân" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Combo id="cmb_xuatthan" left="480" top="295" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="XUAT_THAN" innerdataset="ds_xuatthan" codecolumn="code" displaycolumn="name"/>
+                    <Static id="st_dt_lbl" left="20" top="340" width="90" height="32" text="Dân tộc" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Combo id="cmb_dantoc" left="120" top="340" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="DAN_TOC" innerdataset="ds_dantoc" codecolumn="code" displaycolumn="name"/>
+                    <Static id="st_tg_lbl" left="380" top="340" width="90" height="32" text="Tôn giáo" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Combo id="cmb_tongiao" left="480" top="340" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="TON_GIAO" innerdataset="ds_tongiao" codecolumn="code" displaycolumn="name"/>
+                    <Static id="st_line_sep" left="20" top="385" right="20" height="1" border="1px dashed #c8d0dc, 0px none, 0px none, 0px none" text=""/>
+                    <Static id="st_qt_lbl" left="20" top="400" width="90" height="32" text="Quốc tịch" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Combo id="cmb_quoctich" left="120" top="400" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="QUOC_TICH" innerdataset="ds_quoctich" codecolumn="code" displaycolumn="name"/>
+                    <Static id="st_cmt_lbl" left="380" top="400" width="90" height="32" text="CMND/CCCD" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Edit id="edt_cmt" left="480" top="400" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="CMT"/>
+                    <Static id="st_ngaycmt_lbl" left="20" top="445" width="90" height="32" text="Ngày cấp" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Calendar id="cal_ngaycmt" left="120" top="445" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="NGAY_CMT"/>
+                    <Static id="st_noicap_lbl" left="380" top="445" width="90" height="32" text="Nơi cấp" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Combo id="cmb_noicap" left="480" top="445" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="NOI_CAP" innerdataset="ds_noicap" codecolumn="code" displaycolumn="name"/>
+                    <Static id="st_shc_lbl" left="20" top="490" width="90" height="32" text="Số hộ chiếu" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Edit id="edt_sohochieu" left="120" top="490" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="SO_HO_CHIEU"/>
+                    <Static id="st_ngaycap_lbl" left="380" top="490" width="90" height="32" text="Ngày cấp" font="12px Arial" color="#333333" textAlign="left"/>
+                    <Calendar id="cal_ngaycap" left="480" top="490" width="230" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="NGAY_CAP_HC"/>
                   </Layout>
                 </Layouts>
               </Div>
-              <Div id="div_right" left="770" top="0" width="280" height="620" background="white" border="0px none, 0px none, 0px none, 1px solid #d0d8e8">
+              <Div id="div_right" left="770" top="20" width="280" height="600" background="white" border="1px solid #dde3ec" borderRadius="6px">
                 <Layouts>
                   <Layout>
-                    <Div id="div_avatarCard" left="20" top="15" width="230" height="255" background="white" border="1px solid #d0d8e8" borderRadius="4px">
+                    <ImageViewer id="img_avatar" left="15" top="15" right="15" height="180" border="1px solid #e0e0e0" stretch="fit" image="imagerc::photo_men.png" background="#f8f9fa"/>
+                    <Div id="div_avatarAction" left="0" top="205" right="0" height="50" background="#f4f7fa" border="1px solid #dde3ec, 0px none, 0px none, 0px none">
                       <Layouts>
                         <Layout>
-                          <ImageViewer id="img_avatar" left="15" top="15" right="15" height="180" border="1px solid #e0e0e0" stretch="fit" image="imagerc::photo_men.png" background="#f8f9fa"/>
-                          <Div id="div_avatarAction" left="0" bottom="0" right="0" height="50" background="#f4f7fa" border="1px solid #d0d8e8, 0px none, 0px none, 0px none">
-                            <Layouts>
-                              <Layout>
-                                <Button id="btn_addAvatar" left="18" top="9" width="32" height="32" text="+" font="bold 18px Arial" color="white" background="#1976d2" border="0px none" borderRadius="16px" cursor="hand" onclick="btn_addAvatar_onclick"/>
-                                <Button id="btn_removeAvatar" left="58" top="9" width="32" height="32" text="-" font="bold 22px Arial" color="white" background="#e53935" border="0px none" borderRadius="16px" cursor="hand" onclick="btn_removeAvatar_onclick"/>
-                              </Layout>
-                            </Layouts>
-                          </Div>
+                          <Button id="btn_addAvatar" left="18" top="9" width="32" height="32" text="+" font="bold 18px Arial" color="white" background="#1976d2" border="0px none" borderRadius="16px" cursor="hand" onclick="btn_addAvatar_onclick"/>
+                          <Button id="btn_removeAvatar" left="58" top="9" width="32" height="32" text="-" font="bold 22px Arial" color="white" background="#e53935" border="0px none" borderRadius="16px" cursor="hand" onclick="btn_removeAvatar_onclick"/>
                         </Layout>
                       </Layouts>
                     </Div>
-                    <Div id="div_lienhe" left="20" top="290" width="230" height="170" background="white" border="1px solid #d0d8e8" borderRadius="4px">
+                    <Div id="div_lienhe" left="0" top="260" right="0" height="170" background="white" border="1px solid #dde3ec" borderRadius="6px">
                       <Layouts>
                         <Layout>
-                          <Static id="st_lienhe_title" left="0" top="0" right="0" height="35" text="Liên hệ" font="bold 12px Arial" color="#333333" background="#f4f7fa" border="0px none, 0px none, 1px solid #d0d8e8, 0px none" padding="0px 0px 0px 15px" verticalAlign="middle"/>
+                          <Static id="st_lienhe_title" left="0" top="0" right="0" height="35" text="Liên hệ" font="bold 12px Arial" color="#333333" background="#f4f7fa" border="0px none, 0px none, 1px solid #dde3ec, 0px none" padding="0px 0px 0px 15px" verticalAlign="middle"/>
                           <Static id="st_email_lbl" left="15" top="43" width="100" height="20" text="Email" font="bold 11px Arial" color="#555555"/>
-                          <Edit id="edt_email" left="15" top="63" right="15" height="28" border="1px solid #a6b5cc" borderRadius="3px" background="white" font="12px Arial" padding="0px 0px 0px 10px" dataset="ds_sinhVien" datacolumn="email"/>
+                          <Edit id="edt_email" left="15" top="63" right="15" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="EMAIL"/>
                           <Static id="st_didong_lbl" left="15" top="103" width="100" height="20" text="Di động" font="bold 11px Arial" color="#555555"/>
-                          <Edit id="edt_didong" left="15" top="123" right="15" height="28" border="1px solid #a6b5cc" borderRadius="3px" background="white" font="12px Arial" padding="0px 0px 0px 10px" dataset="ds_sinhVien" datacolumn="didong"/>
+                          <Edit id="edt_didong" left="15" top="123" right="15" height="32" border="1px solid #d0d8e8" borderRadius="4px" padding="0px 10px" dataset="ds_sinhVien" datacolumn="DI_DONG"/>
                         </Layout>
                       </Layouts>
                     </Div>
+                    <Button id="btn_back" left="20" top="480" width="110" height="36" text="Quay lại" font="bold 12px Arial" color="#1a5db5" background="#e4f1fd" border="1px solid #b3d4f5" borderRadius="4px" cursor="hand" onclick="btn_back_onclick"/>
+                    <Button id="btn_submit" left="145" top="480" width="110" height="36" text="Cập nhật" font="bold 12px Arial" color="white" background="#1a5db5" border="0px none" borderRadius="4px" cursor="hand" onclick="btn_submit_onclick"/>
                   </Layout>
                 </Layouts>
               </Div>
@@ -279,77 +228,118 @@
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.QuanLySinhVien_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-    this.fn_initForm();
-    this.fn_bindData();
+    // Gọi hàm Load Data (sau này bạn nối link Postman thực tế vào đây)
+    this.fn_loadData();
 };
 
-this.fn_initForm = function()
+this.fn_loadData = function()
 {
-    this.div_scroll.form.div_left.form.edt_manhanvien.setFocus();
-};
-
-this.fn_bindData = function()
-{
+    // === CODE GỌI API THỰC TẾ SẼ VIẾT VÀO ĐÂY ===
+    // var strSvcId    = "getStudentProfile";
+    // var strSvcUrl   = "http://link-postman-cua-ban/getStudentProfile";
+    // var inData      = "";
+    // var outData     = "ds_sinhVien=ds_student_profile"; 
+    // var strArg      = "";
+    // var callBackFnc = "fn_callback";
+    // this.transaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc);
+    
+    // TẠM THỜI TẠO DATA CỨNG TRƯỚC KHI CÓ LINK POSTMAN:
     var ds = this.ds_sinhVien;
-    if (ds.rowcount == 0) ds.addRow();
-    trace("manhanvien=" + ds.getColumn(0, "manhanvien"));
+    if (ds.rowcount == 0) {
+        ds.addRow();
+        // Giả lập dữ liệu Mentor trả về
+        ds.setColumn(0, "MA_NHAN_VIEN", "0002");
+        ds.setColumn(0, "HO", "Đinh");
+        ds.setColumn(0, "TEN_DEM", "Thị");
+        ds.setColumn(0, "TEN", "Hương");
+        ds.setColumn(0, "GIOI_TINH", "F"); 
+        ds.setColumn(0, "AVATAR_URL", "imagerc::photo_women.png"); // Mentor sẽ trả về URL ảnh ở đây
+    }
+    
     this.fn_setDefaultAvatar();
 };
 
+// Hàm xử lý sau khi API trả dữ liệu về thành công
+this.fn_callback = function(svcId, errCode, errMsg)
+{
+    if (errCode < 0) {
+        alert("Lỗi tải dữ liệu: " + errMsg);
+        return;
+    }
+    if (svcId == "getStudentProfile") {
+        this.fn_setDefaultAvatar();
+    }
+};
+
+// 1. Logic xử lý hiển thị Avatar từ Server
 this.fn_setDefaultAvatar = function()
 {
     var img = this.div_scroll.form.div_right.form.div_avatarCard.form.img_avatar;
     if (!img) return;
-    var sAvatar = this.nvl(this.ds_sinhVien.getColumn(0, "avatar"));
-    if (sAvatar != "") { img.set_image(sAvatar); return; }
-    var sGt = this.nvl(this.ds_sinhVien.getColumn(0, "gioitinh"));
-    img.set_image(sGt == "Nữ" ? "imagerc::photo_women.png" : "imagerc::photo_men.png");
+    
+    // Lấy URL từ trường AVATAR_URL của JSON
+    var sAvatarUrl = this.nvl(this.ds_sinhVien.getColumn(0, "AVATAR_URL"));
+    
+    if (sAvatarUrl != "") {
+        img.set_image(sAvatarUrl);
+    } else {
+        // Fallback: Nếu JSON không có ảnh, tự động hiển thị theo Giới tính (F = Nữ, M = Nam)
+        var sGt = this.nvl(this.ds_sinhVien.getColumn(0, "GIOI_TINH"));
+        img.set_image(sGt == "F" ? "imagerc::photo_women.png" : "imagerc::photo_men.png");
+    }
+};
+
+// 2. Logic Validate Nút Submit "Cập nhật" theo yêu cầu Mentor
+this.btn_submit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    var ds = this.ds_sinhVien;
+    var f  = this.div_scroll.form.div_left.form;
+    
+    var maNV = this.nvl(ds.getColumn(0, "MA_NHAN_VIEN"));
+    var ho   = this.nvl(ds.getColumn(0, "HO"));
+    var ten  = this.nvl(ds.getColumn(0, "TEN"));
+
+    // Bắt buộc nhập Mã NV
+    if (maNV == "") { 
+        alert("Vui lòng nhập Mã nhân viên."); 
+        f.edt_manhanvien.setFocus(); 
+        return; 
+    }
+    
+    // Bắt buộc nhập Họ và Tên
+    if (ho == "" || ten == "") { 
+        alert("Vui lòng nhập đầy đủ Họ và Tên."); 
+        if (ho == "") f.edt_ho.setFocus();
+        else f.edt_ten.setFocus();
+        return; 
+    }
+
+    // Pass hết validate
+    alert("Dữ liệu hợp lệ! Gọi API lưu dữ liệu (Postman) tại đây...");
+    // Gọi transaction Save ...
 };
 
 this.btn_addAvatar_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-    var sFile = "imagerc::photo_men.png";
+    // Chức năng Upload ảnh thực tế sẽ dùng fileDialog, tạm thời mockup set cứng ảnh:
+    var sFile = "imagerc::photo_men.png"; 
     var img = this.div_scroll.form.div_right.form.div_avatarCard.form.img_avatar;
     img.set_image(sFile);
-    this.ds_sinhVien.setColumn(0, "avatar", sFile);
+    this.ds_sinhVien.setColumn(0, "AVATAR_URL", sFile);
 };
 
 this.btn_removeAvatar_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
     if (this.confirm("Bạn có muốn xóa ảnh đại diện không?", "Xác nhận")) {
-        this.ds_sinhVien.setColumn(0, "avatar", "");
+        this.ds_sinhVien.setColumn(0, "AVATAR_URL", "");
         this.fn_setDefaultAvatar();
     }
-};
-
-this.fn_validate = function()
-{
-    var ds = this.ds_sinhVien;
-    var f  = this.div_scroll.form.div_left.form;
-    if (this.nvl(ds.getColumn(0,"manhanvien"))=="") { alert("Vui lòng nhập Mã nhân viên."); f.edt_manhanvien.setFocus(); return false; }
-    if (this.nvl(ds.getColumn(0,"ho"))=="")         { alert("Vui lòng nhập Họ.");           f.edt_ho.setFocus();         return false; }
-    if (this.nvl(ds.getColumn(0,"ten"))=="")        { alert("Vui lòng nhập Tên.");           f.edt_ten.setFocus();        return false; }
-    if (this.nvl(ds.getColumn(0,"gioitinh"))=="")   { alert("Vui lòng chọn Giới tính.");    f.cmb_gioitinh.setFocus();   return false; }
-    if (this.nvl(ds.getColumn(0,"ngaysinh"))=="")   { alert("Vui lòng nhập Ngày sinh.");    f.cal_ngaysinh.setFocus();   return false; }
-    return true;
 };
 
 this.nvl = function(val)
 {
     if (val == null || val == undefined) return "";
     return String(val).trim();
-};
-
-this.div_scroll_div_right_div_avatarCard_img_avatar_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventInfo){};
-this.div_scroll_div_left_st_sohs_lbl_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
-{
-	
-};
-
-this.div_scroll_div_left_edt_manhanvien_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
-{
-	
-};
-]]></Script>
+};]]></Script>
   </Form>
 </FDL>
