@@ -142,32 +142,19 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[/* ============================================================
-   SỰ KIỆN FORM LOAD - GỌI API LẤY DỮ LIỆU
-   ============================================================ */
-this.QuanLySinhVien_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo)
+    <Script type="xscript5.1"><![CDATA[this.QuanLySinhVien_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo)
 {
-    // Gọi API lấy dữ liệu sinh viên
     this.fn_fetchStudentData();
 };
-
-/* ============================================================
-   1. HÀM GỌI API & DATABASE GIẢ LẬP
-   ============================================================ */
 this.fn_fetchStudentData = function()
 {
-    // BƯỚC 1: Tìm xem trong bộ nhớ trình duyệt đã có data lưu trước đó chưa?
     var savedData = nexacro.getPrivateProfile("DB_SINHVIEN_MOCK");
     
     if (savedData && savedData !== "") {
-        // NẾU CÓ RỒI: Đổ thẳng data này vào Dataset, bỏ qua việc gọi Postman!
-        this.ds_sinhVien.loadXML(savedData);
         this.fn_bindStudentProfile();
         this.fn_updateAvatarUI();
-        return; // Thoát hàm
+        return; 
     }
-
-    // BƯỚC 2: NẾU CHƯA CÓ (Mở web lần đầu) -> Đi gọi Postman
     var sUrl = "https://cef03a03-a6eb-4f84-9a3f-1c9cd39b4977.mock.pstmn.io/getStudentProfile";
     var objXhr = new XMLHttpRequest();
     var pThis = this; 
@@ -184,8 +171,6 @@ this.fn_fetchStudentData = function()
             
             if (responseJson && responseJson.ds_student_profile) {
                 pThis.fn_populateDataset(responseJson.ds_student_profile);
-                
-                // MẸO CỰC HAY: Vừa lấy data từ Postman về là "nhét" luôn vào bộ nhớ trình duyệt
                 nexacro.setPrivateProfile("DB_SINHVIEN_MOCK", pThis.ds_sinhVien.saveXML());
             }
         }
@@ -195,9 +180,6 @@ this.fn_fetchStudentData = function()
     objXhr.send();
 };
 
-/* ============================================================
-   2. HÀM ĐỔ DỮ LIỆU VÀO DATASET (Thông minh, không gán tay)
-   ============================================================ */
 this.fn_populateDataset = function(arrData)
 {
     var ds = this.ds_sinhVien;
@@ -206,23 +188,17 @@ this.fn_populateDataset = function(arrData)
     if (arrData && arrData.length > 0) {
         var nRow = ds.addRow();
         var dataItem = arrData[0]; 
-
-        // Tự động map các key trong JSON vào cột của Dataset
         for (var key in dataItem) {
             if (ds.getColIndex(key) >= 0) {
                 ds.setColumn(nRow, key, dataItem[key] || "");
             }
         }
     }
-    
-    // Gọi hàm setup Combobox (chuẩn Mentor) và render Avatar
+
     this.fn_bindStudentProfile();
     this.fn_updateAvatarUI();
 };
 
-/* ============================================================
-   3. HÀM BINDING BỔ SUNG (Chuẩn hóa code theo phong cách Mentor)
-   ============================================================ */
 this.setupCombo = function(combo, dsid, codecol, datacol) {
     if (combo && !combo._dataset_binded) {
         combo.set_innerdataset(dsid);
@@ -234,7 +210,6 @@ this.setupCombo = function(combo, dsid, codecol, datacol) {
 
 this.fn_bindStudentProfile = function()
 {
-    // CƠ CHẾ DÒ TÌM ĐƯỜNG DẪN THÔNG MINH
     var divLeft;
     if (this.div_left) divLeft = this.div_left;
     else if (this.div_scroll && this.div_scroll.form.div_left) divLeft = this.div_scroll.form.div_left;
@@ -242,8 +217,6 @@ this.fn_bindStudentProfile = function()
     if (!divLeft) return;
 
     var f = divLeft.form;
-    
-    // Setup các combobox
     if(f.cmb_gioitinh) this.setupCombo(f.cmb_gioitinh, "ds_gioitinh", "code", "name");
     if(f.cmb_honnhan) this.setupCombo(f.cmb_honnhan, "ds_honnhan", "code", "name");
     if(f.cmb_xuatthan) this.setupCombo(f.cmb_xuatthan, "ds_xuatthan", "code", "name");
@@ -253,19 +226,12 @@ this.fn_bindStudentProfile = function()
     if(f.cmb_noicap) this.setupCombo(f.cmb_noicap, "ds_noicap", "code", "name");
 };
 
-/* ============================================================
-   4. HÀM XỬ LÝ AVATAR (Khắc phục triệt để lỗi undefine)
-   ============================================================ */
 this.fn_updateAvatarUI = function()
-{
-    // CƠ CHẾ DÒ TÌM ĐƯỜNG DẪN THÔNG MINH
+{H
     var divRight;
     if (this.div_right) divRight = this.div_right;
-    else if (this.div_scroll && this.div_scroll.form.div_right) divRight = this.div_scroll.form.div_right;
-    
+    else if (this.div_scroll && this.div_scroll.form.div_right) divRight = this.div_scroll.form.div_right;   
     if (!divRight) return; 
-
-    // Lấy ảnh: Hỗ trợ cả trường hợp ảnh nằm trực tiếp hoặc trong div_avatarCard
     var imgComp = divRight.form.img_avatar; 
     if(!imgComp && divRight.form.div_avatarCard) {
         imgComp = divRight.form.div_avatarCard.form.img_avatar;
@@ -279,14 +245,9 @@ this.fn_updateAvatarUI = function()
     if (sAvatarUrl && sAvatarUrl !== "") {
         imgComp.set_image(sAvatarUrl);
     } else {
-        // Fallback tự động
         imgComp.set_image(sGender === "M" ? "imagerc::photo_men.png" : "imagerc::photo_women.png");
     }
 };
-
-/* ============================================================
-   5. HÀM VALIDATE DỮ LIỆU
-   ============================================================ */
 this.fn_checkValidation = function()
 {
     var ds = this.ds_sinhVien;
@@ -307,117 +268,66 @@ this.fn_checkValidation = function()
     }
     return true;
 };
-
-/* ============================================================
-   6. NÚT CẬP NHẬT (Lưu thẳng vào trình duyệt)
-   ============================================================ */
 this.btn_submit_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {
     if (this.fn_checkValidation()) {
-        
-        // 1. Chuyển toàn bộ dữ liệu mới nhất trong Dataset thành mã XML
-        var sDataXML = this.ds_sinhVien.saveXML();
-        
-        // 2. Lưu đè mã XML này vào bộ nhớ trình duyệt (Giả lập việc ghi vào Database)
         nexacro.setPrivateProfile("DB_SINHVIEN_MOCK", sDataXML);
         
-        alert("Cập nhật thành công! Dữ liệu đã được lưu lại thật sự.");
+        alert("Cập nhật thành công");
     }
 };
 
-// HÀM LƯU DỮ LIỆU LÊN SERVER (GHI ĐIỂM VỚI MENTOR Ở ĐÂY)
 this.fn_saveStudentData = function()
 {
-    // Ở môi trường thực tế, ta sẽ dùng Transaction với phương thức POST/PUT
-    // Tham số ":U" nghĩa là chỉ gửi lên server những dòng dữ liệu bị thay đổi (Update)
-    /*
-    var strSvcId    = "saveStudentProfile";
-    var strSvcUrl   = "https://cef03a03-a6eb-4f84-9a3f-1c9cd39b4977.mock.pstmn.io/updateStudent";
-    var inData      = "inputDataset=ds_sinhVien:U"; 
-    var outData     = "";
-    var strArg      = "";
-    var callBackFnc = "fn_callback";
-    
-    this.transaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc);
-    */
-
-    // VÌ ĐANG DÙNG MOCK API NÊN TA CHỈ MÔ PHỎNG THÔNG BÁO LƯU THÀNH CÔNG
     alert("Dữ liệu đã được đóng gói chuẩn bị gửi lên Server!");
 };
 
 this.btn_addAvatar_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {
-    // Khởi tạo cửa sổ chọn file bằng code (Chuẩn Pro, không cần kéo thả tay)
     var fileDialog = new nexacro.FileDialog("fileDialog_avatar", this);
-    
-    // Lọc chỉ cho phép hiển thị các file hình ảnh
     fileDialog.set_accept(".png, .jpg, .jpeg, .gif, image/*");
-    
-    // Lắng nghe sự kiện sau khi bạn chọn file xong
     fileDialog.addEventHandler("onclose", this.fileDialog_onclose, this);
-    
-    // Mở hộp thoại cửa sổ Windows (Chế độ LOAD = Chọn file có sẵn)
     fileDialog.open('Chọn ảnh đại diện Nexacro', nexacro.FileDialog.LOAD);
 };
 this.fileDialog_onclose = function(obj:nexacro.FileDialog, e:nexacro.FileDialogEventInfo)
 {
     if (e.virtualfiles && e.virtualfiles.length > 0) {
         var vFile = e.virtualfiles[0]; 
-        
-        // Xóa sự kiện cũ cho chắc cú
         vFile.clearEventHandler("onsuccess");
-        vFile.clearEventHandler("onerror");
-        
+        vFile.clearEventHandler("onerror");     
         vFile.addEventHandler("onsuccess", function(vf, evt) {
-            // Giai đoạn 1: Mở file thành công (Mã 1)
             if (evt.reason == 1) { 
-                vf.read(); // Ra lệnh đọc file
+                vf.read(); 
             }
-            // Giai đoạn 2: Đọc file thành công (Mã 3)
             else if (evt.reason == 3) { 
                 var ext = vf.filename.split('.').pop().toLowerCase();
                 var mime = "image/png";
                 if (ext === "jpg" || ext === "jpeg") mime = "image/jpeg";
                 else if (ext === "gif") mime = "image/gif";
-                
-                // Lấy data an toàn
                 var rawData = evt.binarydata ? evt.binarydata : evt.textdata;
                 var base64 = "data:" + mime + ";base64," + nexacro.base64Encode(rawData);
-                
-                // Cập nhật giao diện
                 this.ds_sinhVien.setColumn(0, "AVATAR_URL", base64);
                 this.fn_updateAvatarUI();
-                
-                // QUAN TRỌNG: Đọc xong phải đóng cửa lại để không bị khóa file
                 vf.close(); 
             }
         }, this);
         
         vFile.addEventHandler("onerror", function(vf, evt) {
             alert("Lỗi đọc file: " + evt.errormsg);
-            // Có lỗi cũng phải đóng cửa để lần sau test không bị Permission Denied
             vf.close(); 
         }, this);
-        
-        // Bắt đầu mở file (Dùng null là chuẩn nhất để đi qua bảo mật Nexacro)
-        vFile.open(null, nexacro.VirtualFile.openRead);
+                vFile.open(null, nexacro.VirtualFile.openRead);
     }
 };
 
 this.btn_removeAvatar_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {
-    // Bật cảnh báo xác nhận xóa
     if (this.confirm("Bạn có chắc chắn muốn xóa ảnh đại diện hiện tại không?", "Xác nhận xóa")) {
-        
-        // Xóa link ảnh trong Dataset
-        this.ds_sinhVien.setColumn(0, "AVATAR_URL", "");
-        
-        // Cập nhật lại giao diện (Hệ thống sẽ tự lùi về ảnh mặc định theo Giới tính)
+        this.ds_sinhVien.setColumn(0, "AVATAR_URL", "");   
         this.fn_updateAvatarUI();
     }
 };
 
-// Hàm tiện ích
 this.nvl = function(val)
 {
     if (val == null || val == undefined) return "";

@@ -2,7 +2,6 @@
 <FDL version="2.1">
   <Form id="QuanLyDiem" width="1280" height="720" titletext="Quản Lý Điểm" background="white" onload="QuanLyDiem_onload">
     <Objects>
-      <!-- Dataset chính: danh sách điểm (map từ /getGradeList) -->
       <Dataset id="ds_diem">
         <ColumnInfo>
           <Column id="stt" type="INT"/>
@@ -70,7 +69,6 @@
           </Row>
         </Rows>
       </Dataset>
-      <!-- Dataset chi tiết điểm cho popup (map từ /getGradeDetail) -->
       <Dataset id="ds_chitiet">
         <ColumnInfo>
           <Column id="thanh_phan" type="STRING" size="100"/>
@@ -91,9 +89,6 @@
             </Layout>
           </Layouts>
         </Div>
-        <!-- ============================================================
-             INFO BAR  left=0  top=55  w=1280  h=40
-        ============================================================ -->
         <Div id="div_infobar" left="0" top="55" right="0" height="40" background="#e8f5e9">
           <Layouts>
             <Layout>
@@ -102,10 +97,6 @@
             </Layout>
           </Layouts>
         </Div>
-        <!-- ============================================================
-             MAIN CONTENT  left=0  top=95  w=1280  h=585
-             Chỉ có 1 danh sách môn học (full width)
-        ============================================================ -->
         <Div id="div_content" left="0" top="95" right="0" bottom="40" background="white">
           <Layouts>
             <Layout>
@@ -191,22 +182,14 @@
         </Div>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[/* ============================================================
-   SỰ KIỆN LOAD TRANG
-   ============================================================ */
-this.QuanLyDiem_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo)
+    <Script type="xscript5.1"><![CDATA[this.QuanLyDiem_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo)
 {
     this.fn_call_api_grade();
 };
-
-/* ============================================================
-   1. GỌI API LẤY DỮ LIỆU ĐIỂM
-   ============================================================ */
 this.fn_call_api_grade = function()
 {
     var p_this = this;
     var xhr = new XMLHttpRequest();
-    // Thay link Mock của bạn vào đây
     var url = "https://00f52d58-de09-471e-bb32-8244fde28147.mock.pstmn.io/getGradeList";
 
     xhr.onreadystatechange = function() {
@@ -222,10 +205,6 @@ this.fn_call_api_grade = function()
     xhr.open("GET", url, true);
     xhr.send();
 };
-
-/* ============================================================
-   2. ĐỔ DỮ LIỆU VÀO ds_diem (Khớp với XML của bạn)
-   ============================================================ */
 this.fn_set_grade = function(arr)
 {
     var ds = this.ds_diem;
@@ -243,10 +222,6 @@ this.fn_set_grade = function(arr)
     }
     ds.set_enableevent(true);
 };
-
-/* ============================================================
-   3. CLICK NÚT CHI TIẾT (MỞ POPUP)
-   ============================================================ */
 this.grd_diem_oncellclick = function(obj:nexacro.Grid, e:nexacro.GridClickEventInfo)
 {
     if (e.cell == 5 && e.row >= 0) {
@@ -255,7 +230,6 @@ this.grd_diem_oncellclick = function(obj:nexacro.Grid, e:nexacro.GridClickEventI
         var sTenHP = ds.getColumn(e.row, "tenhp");
         var fDiem = ds.getColumn(e.row, "diem_tong");
 
-        // Truy cập div_popup.form để lấy các thành phần bên trong
         var pop = this.div_popup.form; 
 
         pop.stc_popup_header.set_text("CHI TIẾT: " + sMaHP);
@@ -264,12 +238,8 @@ this.grd_diem_oncellclick = function(obj:nexacro.Grid, e:nexacro.GridClickEventI
         
         var sXepLoai = (fDiem >= 8.5) ? "Xuất sắc" : (fDiem >= 7.0 ? "Khá" : "Trung bình");
         pop.stc_xl_val.set_text(sXepLoai);
-
-        // Nạp data vào ds_chitiet
         var dsChiTiet = this.ds_chitiet;
         dsChiTiet.clearData();
-        
-        // Thêm 4 dòng dữ liệu mẫu
         var arrData = [
             {tp: "Chuyên cần", ts: "10%", d: 10.0},
             {tp: "Giữa kỳ", ts: "20%", d: 8.5},
@@ -283,19 +253,14 @@ this.grd_diem_oncellclick = function(obj:nexacro.Grid, e:nexacro.GridClickEventI
             dsChiTiet.setColumn(r, "trong_so", arrData[i].ts);
             dsChiTiet.setColumn(r, "diem", arrData[i].d);
         }
-        
-        // --- ÉP GRID VẼ LẠI ---
-        pop.grd_chitiet.createFormat(); 
-        
+        pop.grd_chitiet.createFormat();      
         this.div_popup.set_visible(true);
         this.div_popup.bringToFront();
     }
 };
 
-// Sửa cả nút Đóng để khớp với đường dẫn mới
 this.btn_dong_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {
-    // Nút Đóng nằm trong div_popup, nên obj là con của div_popup.form
     this.div_popup.set_visible(false);
 };
 

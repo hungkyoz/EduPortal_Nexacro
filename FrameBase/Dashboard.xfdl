@@ -106,41 +106,29 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[/* ============================================================
-   SỰ KIỆN FORM LOAD - KHỞI TẠO BINDING DỮ LIỆU THỦ CÔNG
-   ============================================================ */
-this.form_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo)
+    <Script type="xscript5.1"><![CDATA[this.form_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo)
 {
     var row = 0;
     var ds = this.ds_studentInfo;
-
-    // Đổ dữ liệu từ Dataset vào các biến
     var mssvVal = ds.getColumn(row, "mssv");
     var nameVal = ds.getColumn(row, "hoten");
     var khoaVal = ds.getColumn(row, "khoa");
     var courseDa = ds.getColumn(row, "khoahocda");
     var courseTong = ds.getColumn(row, "khoahoctong");
-
-    // Lấy form con bên trong tabpage_dashboard
     var targetForm = this.div_content.form.tab_main.tabpage_dashboard.form;
 
-    // Gán text lên giao diện
+
     targetForm.div_studentCard.form.st_mssv.set_text("MSSV: " + mssvVal);
     targetForm.div_studentCard.form.st_tenValue.set_text(nameVal);
     targetForm.div_studentCard.form.st_khoa.set_text("Khoa: " + khoaVal);
     targetForm.div_stat1.form.st_stat1Value.set_text(courseDa + "/" + courseTong);
 };
-
-/* ============================================================
-   SỰ KIỆN ĐIỀU HƯỚNG MENU 
-   ============================================================ */
 this.fn_menuClick = function(menuId)
 {
     var sidebar = this.div_sidebar.form;
     var header = this.div_header.form; 
     var contentForm = this.div_content.form;
     
-    // 1. Reset màu toàn bộ Menu về chữ đen, nền trắng
     sidebar.st_menu_dashboard.set_background("transparent");
     sidebar.st_menu_dashboard.set_color("#333333");
     sidebar.st_menu_sinhvien.set_background("transparent");
@@ -152,23 +140,20 @@ this.fn_menuClick = function(menuId)
     sidebar.st_menu_thongke.set_background("transparent");
     sidebar.st_menu_thongke.set_color("#333333");
 
-    // 2. Chuyển đổi màn hình, tô xanh Menu và ĐỔI TÊN BREADCRUMB
     if (menuId == "Dashboard") {
         sidebar.st_menu_dashboard.set_background("#1a5db5");//blue
         sidebar.st_menu_dashboard.set_color("white");
         header.st_breadcrumb.set_text("Trang chủ › Dashboard"); 
         
-        // Hiện lại tab Dashboard, ẩn div_subpage đi
         contentForm.tab_main.set_visible(true);
         contentForm.div_subpage.set_visible(false);
-        contentForm.div_subpage.set_url(""); // Xóa rác bộ nhớ trang cũ
+        contentForm.div_subpage.set_url("");
     } 
     else if (menuId == "QuanLySinhVien") {
         sidebar.st_menu_sinhvien.set_background("#1a5db5");
         sidebar.st_menu_sinhvien.set_color("white");
         header.st_breadcrumb.set_text("Trang chủ › Quản lý Sinh viên"); 
-        
-        // Ẩn tab Dashboard đi, mở div_subpage lên để load trang
+		
         contentForm.tab_main.set_visible(false);
         contentForm.div_subpage.set_visible(true);
         contentForm.div_subpage.set_url("FrameBase::QuanLySinhVien.xfdl");
@@ -192,10 +177,18 @@ this.fn_menuClick = function(menuId)
         contentForm.div_subpage.set_url("FrameBase::QuanLyDiem.xfdl");
     }
 };
+this.st_icon_user_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+    var isLogout = this.confirm("Bạn có chắc chắn muốn đăng xuất không?", "Xác nhận Đăng xuất");
+    if (isLogout) {
+        if (this.parent && this.parent.set_formurl) {
+            this.parent.set_formurl("FrameBase::LoginForm.xfdl");
+        } else {
+            this.getOwnerFrame().set_formurl("FrameBase::LoginForm.xfdl");
+        }
+    }
+};
 
-/* ============================================================
-   CÁC SỰ KIỆN ONCLICK GỌI TỪ GIAO DIỆN XML
-   ============================================================ */
 this.st_menu_dashboard_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
 {
     this.fn_menuClick("Dashboard");
@@ -224,7 +217,7 @@ this.st_menu_diem_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo
               <Static id="st_title" left="38" top="8" width="320" height="24" text="HỆ THỐNG ĐĂNG KÝ &amp; QUẢN LÝ HỌC TẬP (LMS)" font="bold 11px Arial" color="white" padding="0px 0px 0px 10px"/>
               <Static id="st_breadcrumb" left="370" top="11" width="200" height="18" text="Trang chủ › Dashboard" font="11px Arial" color="#c8daf5"/>
               <Static id="st_icon_bell" right="95" top="9" width="22" height="22" text="🔔" font="14px Arial" color="white" cursor="hand" textAlign="center"/>
-              <Static id="st_icon_user" right="65" top="9" width="22" height="22" text="👤" font="14px Arial" color="white" cursor="hand" textAlign="center"/>
+              <Static id="st_icon_user" right="65" top="9" width="22" height="22" text="👤" font="14px Arial" color="white" cursor="hand" textAlign="center" onclick="st_icon_user_onclick"/>
               <Static id="st_icon_setting" right="35" top="9" width="22" height="22" text="⚙" font="14px Arial" color="white" cursor="hand" textAlign="center"/>
             </Layout>
           </Layouts>

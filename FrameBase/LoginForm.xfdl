@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="LoginForm" width="400" height="450" titletext="Login" background="#f4f6f9">
+  <Form id="LoginForm" width="1280" height="720" titletext="Login" background="#f4f6f9" onload="LoginForm_onload" onsize="LoginForm_onsize">
     <Layouts>
-      <Layout height="450" width="400">
-        <Div id="div_loginBox" left="20" top="30" right="20" bottom="30" background="white" border="1px solid #d0d8e8" borderRadius="8px" boxShadow="0px 4px 10px rgba(0,0,0,0.1)">
+      <Layout height="720" width="1280">
+        <Div id="div_loginBox" left="440" top="160" width="400" height="400" background="white" border="1px solid #d0d8e8" borderRadius="8px" boxShadow="0px 4px 10px rgba(0,0,0,0.1)">
           <Layouts>
             <Layout>
               <Static id="sta_title" text="Please login" left="30" top="30" width="200" height="40" font="bold 22px Arial" color="#333333"/>
@@ -28,28 +28,31 @@ this.KEY_SAVED_PASS  = "user_saved_password";
 this.LoginForm_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo)
 {
     var f = this.div_loginBox.form;
-    
-    // Đọc trạng thái lưu từ Local Storage
+ //(luu vao local cua may)
     var isRemember = nexacro.getPrivateProfile(this.KEY_REMEMBER_ME);
 
     if (isRemember == "true") {
         var savedEmail = nexacro.getPrivateProfile(this.KEY_SAVED_EMAIL);
         var savedPass  = nexacro.getPrivateProfile(this.KEY_SAVED_PASS);
         
-        // Giải mã mật khẩu bằng atob (bảo vệ tránh lỗi nếu dữ liệu rỗng)
         if (savedPass != null && savedPass != "") {
             try { 
-                savedPass = atob(savedPass); 
+                savedPass = nexacro.base64Decode(savedPass);
             } catch(ex) { 
                 savedPass = ""; 
             }
         }
-        
-        // Gán ngược lại vào input
         f.edt_email.set_value(savedEmail);
         f.edt_password.set_value(savedPass);
         f.chk_remember.set_value(true);
     }
+};
+this.LoginForm_onsize = function(obj:nexacro.Form, e:nexacro.SizeEventInfo)
+{
+    var nLeft = (this.getOffsetWidth() - this.div_loginBox.getOffsetWidth()) / 2;
+    var nTop = (this.getOffsetHeight() - this.div_loginBox.getOffsetHeight()) / 2;
+    this.div_loginBox.set_left(nLeft);
+    this.div_loginBox.set_top(nTop);
 };
 
 this.btn_login_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
@@ -59,7 +62,6 @@ this.btn_login_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
     var password = f.edt_password.value;
     var isRemember = f.chk_remember.value;
     
-    // 1. Reset giao diện về mặc định trước khi kiểm tra
     f.sta_email_err.set_visible(false);
     f.sta_pw_err.set_visible(false);
     f.btn_clear_email.set_visible(false);
@@ -68,43 +70,36 @@ this.btn_login_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
     f.edt_password.set_border("1px solid #d0d8e8");
 
     var isValid = true;
-
-    // 2. Kiểm tra Email
     var emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
     if (!email || !emailPattern.test(email)) {
         f.sta_email_err.set_visible(true);
-        f.edt_email.set_border("1px solid #e53935"); // Hiện viền đỏ
+        f.edt_email.set_border("1px solid #e53935");
         f.btn_clear_email.set_visible(true);
         f.edt_email.setFocus();
         isValid = false;
     }
-    
-    // 3. Kiểm tra Mật khẩu
+
     if (!password || password.length < 10) {
         f.sta_pw_err.set_visible(true);
-        f.edt_password.set_border("1px solid #e53935"); // Hiện viền đỏ
+        f.edt_password.set_border("1px solid #e53935");
         f.btn_clear_pw.set_visible(true);
         if(isValid) f.edt_password.setFocus();
         isValid = false;
     }
 
     if (!isValid) return;
-
-    // 4. Xử lý Logic đúng sai theo yêu cầu
     if (email == "student@gmail.com" && password == "Student123456!") {
         
-        // Nếu user tick chọn Remember me -> Mã hóa base64 (btoa) và lưu lại
         if (isRemember) {
             nexacro.setPrivateProfile(this.KEY_REMEMBER_ME, "true");
             nexacro.setPrivateProfile(this.KEY_SAVED_EMAIL, email);
-            nexacro.setPrivateProfile(this.KEY_SAVED_PASS,  btoa(password));
+            nexacro.setPrivateProfile(this.KEY_SAVED_PASS,  nexacro.base64Encode(password));
         } else {
             nexacro.setPrivateProfile(this.KEY_REMEMBER_ME, "");
             nexacro.setPrivateProfile(this.KEY_SAVED_EMAIL, "");
             nexacro.setPrivateProfile(this.KEY_SAVED_PASS,  "");
         }
-        
-        // Chuyển trang sang Dashboard
+
         if (this.parent && this.parent.set_formurl) {
             this.parent.set_formurl("FrameBase::Dashboard.xfdl");
         } else {
