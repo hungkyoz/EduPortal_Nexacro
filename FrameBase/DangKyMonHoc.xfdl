@@ -1,97 +1,160 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="DangKyMonHoc" width="1280" height="720" titletext="Đăng Ký Môn Học" background="white" onload="DangKyMonHoc_onload">
+  <Form id="DangKyMonHoc" width="890" height="580" titletext="Đăng Ký Môn Học" background="white" onload="DangKyMonHoc_onload">
     <Objects>
-      <!-- ============================================================
-           DATASETS
-           ============================================================ -->
       <Dataset id="ds_monHoc">
         <ColumnInfo>
-          <Column id="chon"     type="INT"/>
-          <Column id="mahp"     type="STRING" size="20"/>
-          <Column id="tenhp"    type="STRING" size="200"/>
-          <Column id="sotc"     type="INT"/>
-          <Column id="lophp"    type="STRING" size="20"/>
-          <Column id="thu"      type="STRING" size="20"/>
-          <Column id="tiet"     type="STRING" size="10"/>
-          <Column id="phong"    type="STRING" size="20"/>
+          <Column id="chon" type="INT"/>
+          <Column id="mahp" type="STRING" size="20"/>
+          <Column id="tenhp" type="STRING" size="200"/>
+          <Column id="sotc" type="INT"/>
+          <Column id="lophp" type="STRING" size="20"/>
+          <Column id="thu" type="STRING" size="20"/>
+          <Column id="tiet" type="STRING" size="10"/>
+          <Column id="phong" type="STRING" size="20"/>
           <Column id="giaovien" type="STRING" size="100"/>
-          <Column id="siso"     type="INT"/>
+          <Column id="siso" type="INT"/>
         </ColumnInfo>
         <Rows>
-          <Row><Col id="mahp">INT1001</Col><Col id="tenhp">Tin học cơ sở</Col><Col id="sotc">3</Col><Col id="lophp">PIC1</Col><Col id="thu">Thứ 2</Col><Col id="tiet">1</Col><Col id="phong">R000</Col><Col id="giaovien">Nguyễn Văn A</Col><Col id="siso">30</Col></Row>
-          <Row><Col id="mahp">PHI1002</Col><Col id="tenhp">Triết học Mác-Lênin</Col><Col id="sotc">3</Col><Col id="lophp">PIC1</Col><Col id="thu">Thứ 3</Col><Col id="tiet">2</Col><Col id="phong">R001</Col><Col id="giaovien">Nguyễn An</Col><Col id="siso">35</Col></Row>
-          <Row><Col id="mahp">INT1003</Col><Col id="tenhp">Triết học Mác-Lênin</Col><Col id="sotc">3</Col><Col id="lophp">PIC1</Col><Col id="thu">Thứ 4</Col><Col id="tiet">3</Col><Col id="phong">R001</Col><Col id="giaovien">Điền Mic Hno</Col><Col id="siso">40</Col></Row>
-          <Row><Col id="mahp">PHI1004</Col><Col id="tenhp">Triết học Đảng học</Col><Col id="sotc">3</Col><Col id="lophp">PIC1</Col><Col id="thu">Thứ 5</Col><Col id="tiet">4</Col><Col id="phong">R001</Col><Col id="giaovien">Nhột Thanh</Col><Col id="siso">40</Col></Row>
-          <Row><Col id="mahp">INT1001</Col><Col id="tenhp">Trang nghệ âm hạt và khóa học</Col><Col id="sotc">3</Col><Col id="lophp">PIC2</Col><Col id="thu">Thứ 3</Col><Col id="tiet">2</Col><Col id="phong">P002</Col><Col id="giaovien">Nguyễn Văng</Col><Col id="siso">25</Col></Row>
-          <Row><Col id="mahp">PHI1002</Col><Col id="tenhp">Triết học Mác-Lênin</Col><Col id="sotc">3</Col><Col id="lophp">PIC2</Col><Col id="thu">Thứ 4</Col><Col id="tiet">3</Col><Col id="phong">P002</Col><Col id="giaovien">Sinh Viên</Col><Col id="siso">28</Col></Row>
-          <Row><Col id="mahp">INT1001</Col><Col id="tenhp">Trang nghệ âm hạt và khóa học</Col><Col id="sotc">3</Col><Col id="lophp">PIC2</Col><Col id="thu">Thứ 2</Col><Col id="tiet">1</Col><Col id="phong">P002</Col><Col id="giaovien">Nguyễn Văng</Col><Col id="siso">20</Col></Row>
-          <Row><Col id="mahp">PHI1002</Col><Col id="tenhp">Triết học Mác-Lênin</Col><Col id="sotc">3</Col><Col id="lophp">PIC2</Col><Col id="thu">Thứ 3</Col><Col id="tiet">2</Col><Col id="phong">R001</Col><Col id="giaovien">Nguyễn An</Col><Col id="siso">35</Col></Row>
-          <Row><Col id="mahp">INT1003</Col><Col id="tenhp">Triết học Mác-Lênin</Col><Col id="sotc">3</Col><Col id="lophp">PIC2</Col><Col id="thu">Thứ 4</Col><Col id="tiet">3</Col><Col id="phong">R001</Col><Col id="giaovien">Nguyễn Văng</Col><Col id="siso">40</Col></Row>
-          <Row><Col id="mahp">INT1001</Col><Col id="tenhp">Triết học Mác-Lênin</Col><Col id="sotc">3</Col><Col id="lophp">PIC2</Col><Col id="thu">Thứ 3</Col><Col id="tiet">2</Col><Col id="phong">P002</Col><Col id="giaovien">Nguyễn Văng</Col><Col id="siso">25</Col></Row>
-          <Row><Col id="mahp">PHI1002</Col><Col id="tenhp">Triết học Mác-Lênin</Col><Col id="sotc">3</Col><Col id="lophp">PIC2</Col><Col id="thu">Thứ 4</Col><Col id="tiet">3</Col><Col id="phong">P002</Col><Col id="giaovien">Sinh Viên</Col><Col id="siso">28</Col></Row>
+          <Row>
+            <Col id="mahp">INT1001</Col>
+            <Col id="tenhp">Tin học cơ sở</Col>
+            <Col id="sotc">3</Col>
+            <Col id="lophp">PIC1</Col>
+            <Col id="thu">Thứ 2</Col>
+            <Col id="tiet">1</Col>
+            <Col id="phong">R000</Col>
+            <Col id="giaovien">Nguyễn Văn A</Col>
+            <Col id="siso">30</Col>
+          </Row>
+          <Row>
+            <Col id="mahp">PHI1002</Col>
+            <Col id="tenhp">Triết học Mác-Lênin</Col>
+            <Col id="sotc">3</Col>
+            <Col id="lophp">PIC1</Col>
+            <Col id="thu">Thứ 3</Col>
+            <Col id="tiet">2</Col>
+            <Col id="phong">R001</Col>
+            <Col id="giaovien">Nguyễn An</Col>
+            <Col id="siso">35</Col>
+          </Row>
+          <Row>
+            <Col id="mahp">INT1003</Col>
+            <Col id="tenhp">Triết học Mác-Lênin</Col>
+            <Col id="sotc">3</Col>
+            <Col id="lophp">PIC1</Col>
+            <Col id="thu">Thứ 4</Col>
+            <Col id="tiet">3</Col>
+            <Col id="phong">R001</Col>
+            <Col id="giaovien">Điền Mic Hno</Col>
+            <Col id="siso">40</Col>
+          </Row>
+          <Row>
+            <Col id="mahp">PHI1004</Col>
+            <Col id="tenhp">Triết học Đảng học</Col>
+            <Col id="sotc">3</Col>
+            <Col id="lophp">PIC1</Col>
+            <Col id="thu">Thứ 5</Col>
+            <Col id="tiet">4</Col>
+            <Col id="phong">R001</Col>
+            <Col id="giaovien">Nhột Thanh</Col>
+            <Col id="siso">40</Col>
+          </Row>
+          <Row>
+            <Col id="mahp">INT1001</Col>
+            <Col id="tenhp">Trang nghệ âm hạt và khóa học</Col>
+            <Col id="sotc">3</Col>
+            <Col id="lophp">PIC2</Col>
+            <Col id="thu">Thứ 3</Col>
+            <Col id="tiet">2</Col>
+            <Col id="phong">P002</Col>
+            <Col id="giaovien">Nguyễn Văng</Col>
+            <Col id="siso">25</Col>
+          </Row>
+          <Row>
+            <Col id="mahp">PHI1002</Col>
+            <Col id="tenhp">Triết học Mác-Lênin</Col>
+            <Col id="sotc">3</Col>
+            <Col id="lophp">PIC2</Col>
+            <Col id="thu">Thứ 4</Col>
+            <Col id="tiet">3</Col>
+            <Col id="phong">P002</Col>
+            <Col id="giaovien">Sinh Viên</Col>
+            <Col id="siso">28</Col>
+          </Row>
         </Rows>
       </Dataset>
-
       <Dataset id="ds_khoa">
         <ColumnInfo>
           <Column id="code" type="STRING" size="50"/>
           <Column id="name" type="STRING" size="100"/>
         </ColumnInfo>
         <Rows>
-          <Row><Col id="code">ALL</Col><Col id="name">Khoa/Viện</Col></Row>
-          <Row><Col id="code">CNTT</Col><Col id="name">Công nghệ thông tin</Col></Row>
-          <Row><Col id="code">DTVT</Col><Col id="name">Điện tử viễn thông</Col></Row>
-          <Row><Col id="code">CK</Col><Col id="name">Cơ khí</Col></Row>
+          <Row>
+            <Col id="code">ALL</Col>
+            <Col id="name">Khoa/Viện</Col>
+          </Row>
+          <Row>
+            <Col id="code">CNTT</Col>
+            <Col id="name">Công nghệ thông tin</Col>
+          </Row>
         </Rows>
       </Dataset>
-
       <Dataset id="ds_khoahoc">
         <ColumnInfo>
           <Column id="code" type="STRING" size="20"/>
           <Column id="name" type="STRING" size="50"/>
         </ColumnInfo>
         <Rows>
-          <Row><Col id="code">ALL</Col><Col id="name">Khóa học</Col></Row>
-          <Row><Col id="code">2020</Col><Col id="name">2020</Col></Row>
-          <Row><Col id="code">2021</Col><Col id="name">2021</Col></Row>
-          <Row><Col id="code">2022</Col><Col id="name">2022</Col></Row>
-          <Row><Col id="code">2023</Col><Col id="name">2023</Col></Row>
+          <Row>
+            <Col id="code">ALL</Col>
+            <Col id="name">Khóa học</Col>
+          </Row>
+          <Row>
+            <Col id="code">2020</Col>
+            <Col id="name">2020</Col>
+          </Row>
         </Rows>
       </Dataset>
-
       <Dataset id="ds_hedaotao">
         <ColumnInfo>
           <Column id="code" type="STRING" size="20"/>
           <Column id="name" type="STRING" size="100"/>
         </ColumnInfo>
         <Rows>
-          <Row><Col id="code">ALL</Col><Col id="name">Education System</Col></Row>
-          <Row><Col id="code">CQ</Col><Col id="name">Chính quy</Col></Row>
-          <Row><Col id="code">LT</Col><Col id="name">Liên thông</Col></Row>
-          <Row><Col id="code">VB2</Col><Col id="name">Văn bằng 2</Col></Row>
+          <Row>
+            <Col id="code">ALL</Col>
+            <Col id="name">Education System</Col>
+          </Row>
+          <Row>
+            <Col id="code">CQ</Col>
+            <Col id="name">Chính quy</Col>
+          </Row>
         </Rows>
       </Dataset>
-
       <Dataset id="ds_loaimonhoc">
         <ColumnInfo>
           <Column id="code" type="STRING" size="20"/>
           <Column id="name" type="STRING" size="100"/>
         </ColumnInfo>
         <Rows>
-          <Row><Col id="code">ALL</Col><Col id="name">Loại môn học</Col></Row>
-          <Row><Col id="code">BB</Col><Col id="name">Bắt buộc</Col></Row>
-          <Row><Col id="code">TC</Col><Col id="name">Tự chọn</Col></Row>
+          <Row>
+            <Col id="code">ALL</Col>
+            <Col id="name">Loại môn học</Col>
+          </Row>
+          <Row>
+            <Col id="code">BB</Col>
+            <Col id="name">Bắt buộc</Col>
+          </Row>
         </Rows>
       </Dataset>
-
       <Dataset id="ds_filter">
         <ColumnInfo>
-          <Column id="khoa"       type="STRING" size="50"/>
-          <Column id="khoahoc"    type="STRING" size="20"/>
-          <Column id="hedaotao"   type="STRING" size="20"/>
+          <Column id="khoa" type="STRING" size="50"/>
+          <Column id="khoahoc" type="STRING" size="20"/>
+          <Column id="hedaotao" type="STRING" size="20"/>
           <Column id="loaimonhoc" type="STRING" size="20"/>
-          <Column id="keyword"    type="STRING" size="200"/>
+          <Column id="keyword" type="STRING" size="200"/>
         </ColumnInfo>
         <Rows>
           <Row>
@@ -103,139 +166,82 @@
         </Rows>
       </Dataset>
     </Objects>
-
     <Layouts>
-      <Layout height="720" width="1280">
-
-        <!-- ============================================================
-             HEADER  top=0 h=55
-             ============================================================ -->
-        <Div id="div_header" left="0" top="0" width="1280" height="55" background="#1e3a5f">
+      <Layout height="580" width="890">
+        <Div id="div_infobar" left="0" top="0" right="0" height="40" background="#2bbbad">
           <Layouts>
             <Layout>
-              <!-- Logo circle -->
-              <Static id="st_logo" left="12" top="9" width="37" height="37" text="" background="#3d7bd4" border="0px none" borderRadius="19px"/>
-              <Static id="st_logo_inner" left="12" top="9" width="37" height="37" text="▣" font="bold 14px Arial" color="white" textAlign="center" verticalAlign="middle"/>
-              <!-- Title -->
-              <Static id="st_header_title" left="58" top="0" width="1100" height="55" text="HỆ THỐNG ĐĂNG KÝ MÔN HỌC - ĐẠI HỌC CÔNG NGHỆ" font="bold 16px Arial" color="white" textAlign="left" verticalAlign="middle"/>
-              <!-- Bell icon -->
-              <Static id="st_bell" left="1188" top="12" width="30" height="30" text="🔔" font="16px Arial" color="white" textAlign="center" verticalAlign="middle"/>
-              <!-- Avatar -->
-              <Static id="st_avatar_bg" left="1230" top="10" width="35" height="35" text="" background="#3d7bd4" border="0px none" borderRadius="18px"/>
-              <Static id="st_avatar" left="1230" top="10" width="35" height="35" text="👤" font="15px Arial" color="white" textAlign="center" verticalAlign="middle"/>
+              <Static id="st_sv_info" left="15" top="0" width="500" bottom="0" text="Chào sinh viên: Nguyễn Văn A (Mã số: 21020001)" font="13px Arial" color="#1e3a5f" textAlign="left" verticalAlign="middle"/>
+              <Static id="st_hk_info" right="15" top="0" width="300" bottom="0" text="Học kỳ: Học kỳ II 2025 - 2026" font="13px Arial" color="#1e3a5f" textAlign="right" verticalAlign="middle"/>
             </Layout>
           </Layouts>
         </Div>
-
-        <!-- ============================================================
-             INFO BAR  top=55 h=40
-             ============================================================ -->
-        <Div id="div_infobar" left="0" top="55" width="1280" height="40" background="#e8f5e9">
+        <Div id="div_left" left="0" top="40" width="240" bottom="0" background="white" border="0px none, 1px dashed #dde3ec, 0px none, 0px none">
           <Layouts>
             <Layout>
-              <Static id="st_sv_info" left="15" top="0" width="650" height="40" text="Chào sinh viên: Nguyễn Văn A (Mã số: 21020001)" font="13px Arial" color="#1e3a5f" textAlign="left" verticalAlign="middle"/>
-              <Static id="st_hk_info" left="665" top="0" width="600" height="40" text="Học kỳ: Học kỳ II - Năm học 2023-2024" font="bold 13px Arial" color="#1e3a5f" textAlign="right" verticalAlign="middle"/>
+              <Static id="st_search_title" left="0" top="0" right="0" height="44" text="TÌM KIẾM KHÓA HỌC" font="14px Arial" color="#666666" textAlign="left" verticalAlign="middle" padding="0px 0px 0px 15px"/>
+              <Static id="st_khoa_lbl" left="15" top="45" width="210" height="20" text="Khoa/Viện" font="bold 12px Arial" color="#333333"/>
+              <Combo id="cmb_khoa" left="15" top="65" width="210" height="30" dataset="ds_filter" datacolumn="name" innerdataset="ds_khoa" codecolumn="code" displaycolumn="name" border="1px solid #c8d0dc" borderRadius="4px" background="white" font="12px Arial"/>
+              <Static id="st_khoahoc_lbl" left="15" top="105" width="210" height="20" text="Khóa học" font="bold 12px Arial" color="#333333"/>
+              <Combo id="cmb_khoahoc" left="15" top="125" width="210" height="30" dataset="ds_filter" datacolumn="name" innerdataset="ds_khoahoc" codecolumn="code" displaycolumn="name" border="1px solid #c8d0dc" borderRadius="4px" background="white" font="12px Arial"/>
+              <Static id="st_he_lbl" left="15" top="165" width="210" height="20" text="Hệ đào tạo" font="bold 12px Arial" color="#333333"/>
+              <Combo id="cmb_hedaotao" left="15" top="185" width="210" height="30" dataset="ds_filter" datacolumn="name" innerdataset="ds_hedaotao" codecolumn="code" displaycolumn="name" border="1px solid #c8d0dc" borderRadius="4px" background="white" font="12px Arial"/>
+              <Static id="st_loai_lbl" left="15" top="225" width="210" height="20" text="Loại môn học" font="bold 12px Arial" color="#333333"/>
+              <Combo id="cmb_loai" left="15" top="245" width="210" height="30" dataset="ds_filter" datacolumn="name" innerdataset="ds_loaimonhoc" codecolumn="code" displaycolumn="name" border="1px solid #c8d0dc" borderRadius="4px" background="white" font="12px Arial"/>
+              <Static id="st_kw_lbl" left="15" top="285" width="210" height="20" text="Mã/Tên môn học" font="bold 12px Arial" color="#333333"/>
+              <Edit id="edt_keyword" left="15" top="305" width="210" height="30" dataset="ds_filter" datacolumn="keyword" border="1px solid #c8d0dc" borderRadius="4px" background="white" font="12px Arial" padding="0px 0px 0px 8px"/>
+              <Button id="btn_timkiem" left="15" top="360" width="210" height="36" text="TÌM KIẾM" font="bold 12px Arial" color="white" background="#5fa39b" border="0px none" borderRadius="4px" cursor="hand" onclick="btn_timkiem_onclick"/>
             </Layout>
           </Layouts>
         </Div>
-
-        <!-- ============================================================
-             LEFT PANEL – TÌM KIẾM MÔN HỌC  left=0 top=95 w=240 h=585
-             ============================================================ -->
-        <Div id="div_left" left="0" top="95" width="240" height="585" background="white" border="0px none, 1px solid #dde3ec, 0px none, 0px none">
+        <Div id="div_right" left="240" top="40" right="0" bottom="0" background="white">
           <Layouts>
             <Layout>
-              <!-- Section title -->
-              <Static id="st_search_title" left="0" top="0" right="0" height="44" text="TÌM KIẾM MÔN HỌC" font="bold 13px Arial" color="#1e3a5f" textAlign="left" verticalAlign="middle" padding="0px 0px 0px 15px" border="0px none, 0px none, 1px solid #dde3ec, 0px none"/>
-
-              <!-- Khoa/Viện -->
-              <Static id="st_khoa_lbl"    left="15" top="53"  width="210" height="18" text="Khoa/Viện"       font="12px Arial" color="#555555"/>
-              <Combo  id="cmb_khoa"       left="15" top="73"  width="210" height="30" dataset="ds_filter" datacolumn="khoa"       innerdataset="ds_khoa"       codecolumn="code" displaycolumn="name" border="1px solid #c8d0dc" background="white" font="12px Arial"/>
-
-              <!-- Khóa học -->
-              <Static id="st_khoahoc_lbl" left="15" top="113" width="210" height="18" text="Khóa học"        font="12px Arial" color="#555555"/>
-              <Combo  id="cmb_khoahoc"    left="15" top="133" width="210" height="30" dataset="ds_filter" datacolumn="khoahoc"    innerdataset="ds_khoahoc"    codecolumn="code" displaycolumn="name" border="1px solid #c8d0dc" background="white" font="12px Arial"/>
-
-              <!-- Hệ đào tạo -->
-              <Static id="st_he_lbl"      left="15" top="173" width="210" height="18" text="Hệ đào tạo"      font="12px Arial" color="#555555"/>
-              <Combo  id="cmb_hedaotao"   left="15" top="193" width="210" height="30" dataset="ds_filter" datacolumn="hedaotao"   innerdataset="ds_hedaotao"   codecolumn="code" displaycolumn="name" border="1px solid #c8d0dc" background="white" font="12px Arial"/>
-
-              <!-- Loại môn học -->
-              <Static id="st_loai_lbl"    left="15" top="233" width="210" height="18" text="Loại môn học"    font="12px Arial" color="#555555"/>
-              <Combo  id="cmb_loai"       left="15" top="253" width="210" height="30" dataset="ds_filter" datacolumn="loaimonhoc" innerdataset="ds_loaimonhoc" codecolumn="code" displaycolumn="name" border="1px solid #c8d0dc" background="white" font="12px Arial"/>
-
-              <!-- Mã/Tên môn học -->
-              <Static id="st_kw_lbl"      left="15" top="293" width="210" height="18" text="Mã/Tên môn học"  font="12px Arial" color="#555555"/>
-              <Edit   id="edt_keyword"    left="15" top="313" width="210" height="30" dataset="ds_filter" datacolumn="keyword" border="1px solid #c8d0dc" background="white" font="12px Arial" padding="0px 0px 0px 8px" hint="Mã/Tên môn học"/>
-
-              <!-- Search button -->
-              <Button id="btn_timkiem"    left="15" top="357" width="210" height="36" text="TÌM KIẾM" font="bold 13px Arial" color="white" background="#2e7d32" border="0px none" borderRadius="4px" cursor="hand" onclick="btn_timkiem_onclick"/>
-
-              <!-- Divider -->
-              <Line   id="line_left_sep"  left="15" top="410" width="210" height="1" border="1px solid #dde3ec"/>
-
-              <!-- Credit counter -->
-              <Static id="st_tc_label"    left="15" top="423" width="210" height="22" text="SỐ TÍN CHỈ ĐÃ ĐĂNG KÝ" font="bold 12px Arial" color="#333333" textAlign="center"/>
-              <Static id="st_tc_value"    left="15" top="450" width="210" height="55" text="0 / 25"           font="bold 30px Arial"   color="#1e3a5f"  textAlign="center" verticalAlign="middle"/>
-            </Layout>
-          </Layouts>
-        </Div>
-
-        <!-- ============================================================
-             RIGHT PANEL – DANH SÁCH MÔN HỌC MỞ  left=240 top=95 w=1040 h=585
-             ============================================================ -->
-        <Div id="div_right" left="240" top="95" width="1040" height="585" background="white">
-          <Layouts>
-            <Layout>
-              <!-- Title + action buttons -->
-              <Static id="st_list_title"   left="20" top="13" width="450" height="30" text="DANH SÁCH MÔN HỌC MỞ" font="bold 15px Arial" color="#1e3a5f" textAlign="left" verticalAlign="middle"/>
-              <Button id="btn_loc_tg"      left="700" top="11" width="160" height="32" text="Lọc theo thời gian" font="13px Arial" color="#444444" background="white" border="1px solid #b0b8c8" borderRadius="4px" cursor="hand"/>
-              <Button id="btn_mon_trung"   left="870" top="11" width="150" height="32" text="Môn trùng lịch"    font="13px Arial" color="white"   background="#e65100" border="0px none"          borderRadius="4px" cursor="hand"/>
-
-              <!-- Course list grid
-                   Column widths: 55+85+305+58+68+72+58+68+158+58 = 985px  (grid w=1000, remainder fills last col) -->
-              <Grid id="grd_monHoc" left="20" top="55" width="1000" height="520" dataset="ds_monHoc" border="1px solid #dde3ec">
+              <Static id="st_list_title" left="15" top="10" width="300" height="30" text="DANH SÁCH MÔN HỌC MỞ" font="16px Arial" color="#666666" textAlign="left" verticalAlign="middle"/>
+              <Button id="btn_loc_tg" top="10" right="170" width="150" height="32" text="Lọc theo thời gian" font="13px Arial" color="#3b69c4" background="#c7d2f0" border="1px solid #94aade" borderRadius="4px" cursor="hand"/>
+              <Button id="btn_mon_trung" top="10" right="15" width="145" height="32" text="Môn trùng lịch" font="13px Arial" color="#cc4125" background="#ffccbc" border="1px solid #e06666" borderRadius="4px" cursor="hand"/>
+              <Grid id="grd_monHoc" left="15" top="55" right="15" bottom="15" dataset="ds_monHoc" border="1px solid #dde3ec" autofittype="col" binddataset="ds_monHoc">
                 <Formats>
                   <Format id="default">
                     <Columns>
-                      <Column size="55"/>
-                      <Column size="85"/>
-                      <Column size="305"/>
-                      <Column size="58"/>
-                      <Column size="68"/>
-                      <Column size="72"/>
-                      <Column size="58"/>
-                      <Column size="68"/>
-                      <Column size="158"/>
-                      <Column size="73"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
+                      <Column size="80"/>
                     </Columns>
                     <Rows>
-                      <Row size="38" band="head"/>
-                      <Row size="34" band="body"/>
+                      <Row band="head" size="24"/>
+                      <Row size="24"/>
                     </Rows>
                     <Band id="head">
-                      <Cell row="0" col="0" text="Chọn"       font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                      <Cell row="0" col="1" text="Mã HP"       font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                      <Cell row="0" col="2" text="Tên HP"      font="bold 12px Arial" color="#333333" textAlign="left"   background="#f4f6fb" border="1px solid #dde3ec" padding="0px 0px 0px 8px"/>
-                      <Cell row="0" col="3" text="Số TC"       font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                      <Cell row="0" col="4" text="Lớp HP"      font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                      <Cell row="0" col="5" text="Thứ"         font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                      <Cell row="0" col="6" text="Tiết"        font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                      <Cell row="0" col="7" text="Phòng"       font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                      <Cell row="0" col="8" text="Giảng viên"  font="bold 12px Arial" color="#333333" textAlign="left"   background="#f4f6fb" border="1px solid #dde3ec" padding="0px 0px 0px 8px"/>
-                      <Cell row="0" col="9" text="Sĩ số"       font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
+                      <Cell text="chon"/>
+                      <Cell col="1" text="mahp"/>
+                      <Cell col="2" text="tenhp"/>
+                      <Cell col="3" text="sotc"/>
+                      <Cell col="4" text="lophp"/>
+                      <Cell col="5" text="thu"/>
+                      <Cell col="6" text="tiet"/>
+                      <Cell col="7" text="phong"/>
+                      <Cell col="8" text="giaovien"/>
+                      <Cell col="9" text="siso"/>
                     </Band>
                     <Band id="body">
-                      <Cell row="0" col="0" text="bind:chon"     edittype="checkbox" checkvalue="1" uncheckvalue="0" textAlign="center" border="1px solid #eef0f5"/>
-                      <Cell row="0" col="1" text="bind:mahp"     font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
-                      <Cell row="0" col="2" text="bind:tenhp"    font="12px Arial" color="#333333" textAlign="left"   border="1px solid #eef0f5" padding="0px 0px 0px 8px"/>
-                      <Cell row="0" col="3" text="bind:sotc"     font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
-                      <Cell row="0" col="4" text="bind:lophp"    font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
-                      <Cell row="0" col="5" text="bind:thu"      font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
-                      <Cell row="0" col="6" text="bind:tiet"     font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
-                      <Cell row="0" col="7" text="bind:phong"    font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
-                      <Cell row="0" col="8" text="bind:giaovien" font="12px Arial" color="#333333" textAlign="left"   border="1px solid #eef0f5" padding="0px 0px 0px 8px"/>
-                      <Cell row="0" col="9" text="bind:siso"     font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
+                      <Cell text="bind:chon"/>
+                      <Cell col="1" text="bind:mahp"/>
+                      <Cell col="2" text="bind:tenhp"/>
+                      <Cell col="3" text="bind:sotc"/>
+                      <Cell col="4" text="bind:lophp"/>
+                      <Cell col="5" text="bind:thu"/>
+                      <Cell col="6" text="bind:tiet"/>
+                      <Cell col="7" text="bind:phong"/>
+                      <Cell col="8" text="bind:giaovien"/>
+                      <Cell col="9" text="bind:siso"/>
                     </Band>
                   </Format>
                 </Formats>
@@ -243,38 +249,116 @@
             </Layout>
           </Layouts>
         </Div>
-
-        <!-- ============================================================
-             FOOTER  top=680 h=40
-             ============================================================ -->
-        <Div id="div_footer" left="0" top="680" width="1280" height="40" background="#f5f6fa" border="1px solid #dde3ec, 0px none, 0px none, 0px none">
-          <Layouts>
-            <Layout>
-              <Static id="st_footer" left="0" top="0" right="0" height="40" text="© 2024 Trung tâm Công nghệ Thông tin - ĐHCN" font="12px Arial" color="#888888" textAlign="center" verticalAlign="middle"/>
-            </Layout>
-          </Layouts>
-        </Div>
-
       </Layout>
     </Layouts>
-
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[/* ============================================================
+   SỰ KIỆN KHI LOAD TRANG ĐĂNG KÝ MÔN HỌC
+   ============================================================ */
 this.DangKyMonHoc_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo)
 {
+    // Khởi tạo dòng trống cho Dataset bộ lọc
     this.fn_initForm();
+    
+    // Gọi API lấy danh sách môn học
+    this.fn_call_api_course();
 };
 
 this.fn_initForm = function()
 {
-    var ds = this.ds_filter;
-    if (ds.rowcount == 0) ds.addRow();
+    var dsFilter = this.ds_filter;
+    if (dsFilter.getRowCount() == 0) dsFilter.addRow();
 };
 
+/* ============================================================
+   1. GỌI API LẤY DANH SÁCH MÔN HỌC
+   ============================================================ */
+this.fn_call_api_course = function()
+{
+    var sUrl = "https://10287624-608f-4623-aee6-ee1314f95e17.mock.pstmn.io/getAvailableCourse";
+    var objXhr = new XMLHttpRequest();
+    var pThis = this;
+
+    objXhr.onreadystatechange = function() {
+        if (objXhr.readyState == 4) {
+            if (objXhr.status == 200) {
+                // THÊM DÒNG NÀY ĐỂ CHECK
+                trace("API Phản hồi: " + objXhr.responseText); 
+                var obj = JSON.parse(objXhr.responseText);
+                pThis.fn_set_course(obj.ds_course_list);
+            } else {
+                alert("API lỗi, status: " + objXhr.status);
+            }
+        }
+    };
+    objXhr.open("GET", sUrl, true);
+    objXhr.send();
+};
+
+/* ============================================================
+   2. ĐỔ DỮ LIỆU VÀO DATASET (CÁCH TRUY XUẤT AN TOÀN)
+   ============================================================ */
+this.fn_set_course = function(arr)
+{
+    // Dùng cách này để tìm Dataset trong Form chắc chắn không bị undefined
+    var ds = this.lookup("ds_monHoc"); 
+    
+    if (!ds) {
+        trace("LỖI: Không tìm thấy Dataset ds_monHoc!");
+        return;
+    }
+
+    ds.set_enableevent(false);
+    ds.clearData();
+
+    for (var i = 0; i < arr.length; i++) {
+        var nRow = ds.addRow();
+        var item = arr[i];
+
+        ds.setColumn(nRow, "chon", 0);
+        ds.setColumn(nRow, "mahp", item.MA_HP || "");
+        ds.setColumn(nRow, "tenhp", item.TEN_HP || "");
+        ds.setColumn(nRow, "sotc", item.SO_TC || "");
+        ds.setColumn(nRow, "lophp", item.LOP_HP || "");
+        ds.setColumn(nRow, "thu", item.THU || "");
+        ds.setColumn(nRow, "tiet", item.TIET || "");
+        ds.setColumn(nRow, "phong", item.PHONG || "");
+        ds.setColumn(nRow, "giaovien", item.GIANG_VIEN || "");
+        ds.setColumn(nRow, "siso", item.SI_SO || "");
+    }
+    ds.set_enableevent(true);
+    trace("Đã load thành công: " + ds.getRowCount() + " môn học.");
+};
+
+/* ============================================================
+   3. SỰ KIỆN TÌM KIẾM
+   ============================================================ */
 this.btn_timkiem_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {
-    var kw = this.ds_filter.getColumn(0, "keyword");
-    trace("TÌM KIẾM: keyword=" + kw);
+    var dsData = this.ds_monHoc; 
+    var kw = String(this.ds_filter.getColumn(0, "keyword") || "").trim().toUpperCase();
+    
+    if (kw === "") {
+        dsData.filter("");
+    } else {
+        // Lọc theo mã hoặc tên
+        dsData.filter("String(mahp).toUpperCase().indexOf('" + kw + "') >= 0 || String(tenhp).toUpperCase().indexOf('" + kw + "') >= 0");
+    }
 };
-    ]]></Script>
+
+/* ============================================================
+   HÀM TIỆN ÍCH
+   ============================================================ */
+this.nvl = function(val)
+{
+    if (val == null || val == undefined) return "";
+    return String(val).trim();
+};]]></Script>
+    <Bind>
+      <BindItem id="bind_keyword" compid="div_left.form.edt_keyword" propid="value" datasetid="ds_filter" columnid="keyword"/>
+      <BindItem id="bind_khoa" compid="div_left.form.cmb_khoa" propid="value" datasetid="ds_filter" columnid="khoa"/>
+      <BindItem id="bind_khoahoc" compid="div_left.form.cmb_khoahoc" propid="value" datasetid="ds_filter" columnid="khoahoc"/>
+      <BindItem id="div_left.form.cmb_hedaotao" compid="div_left.form.cmb_hedaotao" propid="value" datasetid="ds_filter" columnid="hedaotao"/>
+      <BindItem id="bind_loai" compid="div_left.form.cmb_loai" propid="value" datasetid="ds_filter" columnid="loaimonhoc"/>
+    </Bind>
   </Form>
 </FDL>

@@ -20,13 +20,46 @@
         </Div>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[this.btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+    <Script type="xscript5.1"><![CDATA[
+this.KEY_REMEMBER_ME = "user_remember_flag";
+this.KEY_SAVED_EMAIL = "user_saved_email";
+this.KEY_SAVED_PASS  = "user_saved_password";
+
+this.LoginForm_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo)
+{
+    var f = this.div_loginBox.form;
+    
+    // Đọc trạng thái lưu từ Local Storage
+    var isRemember = nexacro.getPrivateProfile(this.KEY_REMEMBER_ME);
+
+    if (isRemember == "true") {
+        var savedEmail = nexacro.getPrivateProfile(this.KEY_SAVED_EMAIL);
+        var savedPass  = nexacro.getPrivateProfile(this.KEY_SAVED_PASS);
+        
+        // Giải mã mật khẩu bằng atob (bảo vệ tránh lỗi nếu dữ liệu rỗng)
+        if (savedPass != null && savedPass != "") {
+            try { 
+                savedPass = atob(savedPass); 
+            } catch(ex) { 
+                savedPass = ""; 
+            }
+        }
+        
+        // Gán ngược lại vào input
+        f.edt_email.set_value(savedEmail);
+        f.edt_password.set_value(savedPass);
+        f.chk_remember.set_value(true);
+    }
+};
+
+this.btn_login_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {
     var f = this.div_loginBox.form;
     var email = f.edt_email.value;
     var password = f.edt_password.value;
+    var isRemember = f.chk_remember.value;
     
-    // 1. Trạng thái reset đầu tiên
+    // 1. Reset giao diện về mặc định trước khi kiểm tra
     f.sta_email_err.set_visible(false);
     f.sta_pw_err.set_visible(false);
     f.btn_clear_email.set_visible(false);
@@ -36,55 +69,63 @@
 
     var isValid = true;
 
-    // 2. Validate Email
-    var emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/; 
-    if (!email || !emailRegex.test(email)) {
-        f.sta_email_err.set_visible(true); 
-        f.edt_email.set_border("1px solid #e53935"); 
-        f.btn_clear_email.set_visible(true); // Hiện nút X màu đỏ
+    // 2. Kiểm tra Email
+    var emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    if (!email || !emailPattern.test(email)) {
+        f.sta_email_err.set_visible(true);
+        f.edt_email.set_border("1px solid #e53935"); // Hiện viền đỏ
+        f.btn_clear_email.set_visible(true);
         f.edt_email.setFocus();
         isValid = false;
     }
-
-    // 3. Validate Password
+    
+    // 3. Kiểm tra Mật khẩu
     if (!password || password.length < 10) {
-        f.sta_pw_err.set_visible(true); 
-        f.edt_password.set_border("1px solid #e53935"); 
-        f.btn_clear_pw.set_visible(true); // Hiện nút X màu đỏ
-        if(isValid) f.edt_password.setFocus(); 
+        f.sta_pw_err.set_visible(true);
+        f.edt_password.set_border("1px solid #e53935"); // Hiện viền đỏ
+        f.btn_clear_pw.set_visible(true);
+        if(isValid) f.edt_password.setFocus();
         isValid = false;
     }
 
-    if(!isValid) return;
+    if (!isValid) return;
 
-    // 4. Kiểm tra tài khoản cứng (Hardcode)
+    // 4. Xử lý Logic đúng sai theo yêu cầu
     if (email == "student@gmail.com" && password == "Student123456!") {
-        // Đúng tài khoản -> Chuyển sang Dashboard
-        if(this.parent && this.parent.set_formurl) {
+        
+        // Nếu user tick chọn Remember me -> Mã hóa base64 (btoa) và lưu lại
+        if (isRemember) {
+            nexacro.setPrivateProfile(this.KEY_REMEMBER_ME, "true");
+            nexacro.setPrivateProfile(this.KEY_SAVED_EMAIL, email);
+            nexacro.setPrivateProfile(this.KEY_SAVED_PASS,  btoa(password));
+        } else {
+            nexacro.setPrivateProfile(this.KEY_REMEMBER_ME, "");
+            nexacro.setPrivateProfile(this.KEY_SAVED_EMAIL, "");
+            nexacro.setPrivateProfile(this.KEY_SAVED_PASS,  "");
+        }
+        
+        // Chuyển trang sang Dashboard
+        if (this.parent && this.parent.set_formurl) {
             this.parent.set_formurl("FrameBase::Dashboard.xfdl");
         } else {
             this.getOwnerFrame().set_formurl("FrameBase::Dashboard.xfdl");
         }
     } else {
-        // Sai tài khoản -> Báo lỗi như Mentor dặn
         this.alert("wrong Email or Password, please check again");
     }
 };
 
-// ==========================================
-// HÀM XỬ LÝ KHI CLICK VÀO NÚT "✖" (CLEAR)
-// ==========================================
-this.btn_clear_email_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.btn_clear_email_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {
     var f = this.div_loginBox.form;
-    f.edt_email.set_value("");                   // Xóa trắng ô nhập liệu
-    f.edt_email.set_border("1px solid #d0d8e8"); // Trả lại viền xám mặc định
-    f.sta_email_err.set_visible(false);          // Giấu dòng text lỗi
-    obj.set_visible(false);                      // Giấu luôn nút X
-    f.edt_email.setFocus();                      // Trỏ chuột lại vào ô Email cho user gõ
+    f.edt_email.set_value("");                   
+    f.edt_email.set_border("1px solid #d0d8e8");  
+    f.sta_email_err.set_visible(false);          
+    obj.set_visible(false);                      
+    f.edt_email.setFocus();                      
 };
 
-this.btn_clear_pw_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.btn_clear_pw_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {
     var f = this.div_loginBox.form;
     f.edt_password.set_value("");                

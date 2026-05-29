@@ -1,279 +1,307 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
   <Form id="QuanLyDiem" width="1280" height="720" titletext="Quản Lý Điểm" background="white" onload="QuanLyDiem_onload">
     <Objects>
-
       <!-- Dataset chính: danh sách điểm (map từ /getGradeList) -->
       <Dataset id="ds_diem">
         <ColumnInfo>
-          <Column id="stt"          type="INT"/>
-          <Column id="mahp"         type="STRING" size="20"/>
-          <Column id="tenhp"        type="STRING" size="200"/>
+          <Column id="stt" type="INT"/>
+          <Column id="mahp" type="STRING" size="20"/>
+          <Column id="tenhp" type="STRING" size="200"/>
           <Column id="namhoc_hocky" type="STRING" size="50"/>
-          <Column id="diem_tong"    type="FLOAT"/>
+          <Column id="diem_tong" type="FLOAT"/>
         </ColumnInfo>
         <Rows>
-          <Row><Col id="stt">1</Col><Col id="mahp">INT1001</Col><Col id="tenhp">Tin học cơ sở</Col><Col id="namhoc_hocky">2023-2024 Kỳ I</Col><Col id="diem_tong">8.5</Col></Row>
-          <Row><Col id="stt">2</Col><Col id="mahp">PHI1002</Col><Col id="tenhp">Triết học Mác-Lênin</Col><Col id="namhoc_hocky">2023-2024 Kỳ I</Col><Col id="diem_tong">7.8</Col></Row>
-          <Row><Col id="stt">3</Col><Col id="mahp">INT1003</Col><Col id="tenhp">Lập trình C++</Col><Col id="namhoc_hocky">2023-2024 Kỳ II</Col><Col id="diem_tong">9.2</Col></Row>
-          <Row><Col id="stt">4</Col><Col id="mahp">PHI1004</Col><Col id="tenhp">Lịch sử Đảng Cộng sản VN</Col><Col id="namhoc_hocky">2023-2024 Kỳ II</Col><Col id="diem_tong">9.5</Col></Row>
-          <Row><Col id="stt">5</Col><Col id="mahp">INT2001</Col><Col id="tenhp">Cơ sở dữ liệu</Col><Col id="namhoc_hocky">2023-2024 Kỳ II</Col><Col id="diem_tong">9.5</Col></Row>
-          <Row><Col id="stt">6</Col><Col id="mahp">INT3012</Col><Col id="tenhp">Phân tích hệ thống thông tin</Col><Col id="namhoc_hocky">2024-2025 Kỳ I</Col><Col id="diem_tong">8.0</Col></Row>
-          <Row><Col id="stt">7</Col><Col id="mahp">MAT1092</Col><Col id="tenhp">Giải tích 1</Col><Col id="namhoc_hocky">2024-2025 Kỳ I</Col><Col id="diem_tong">6.8</Col></Row>
-          <Row><Col id="stt">8</Col><Col id="mahp">INT3040</Col><Col id="tenhp">Lập trình Web nâng cao</Col><Col id="namhoc_hocky">2024-2025 Kỳ II</Col><Col id="diem_tong">9.0</Col></Row>
+          <Row>
+            <Col id="stt">1</Col>
+            <Col id="mahp">INT1001</Col>
+            <Col id="tenhp">Tin học cơ sở</Col>
+            <Col id="namhoc_hocky">2023-2024 Kỳ I</Col>
+            <Col id="diem_tong">8.5</Col>
+          </Row>
+          <Row>
+            <Col id="stt">2</Col>
+            <Col id="mahp">PHI1002</Col>
+            <Col id="tenhp">Triết học Mác-Lênin</Col>
+            <Col id="namhoc_hocky">2023-2024 Kỳ I</Col>
+            <Col id="diem_tong">7.8</Col>
+          </Row>
+          <Row>
+            <Col id="stt">3</Col>
+            <Col id="mahp">INT1003</Col>
+            <Col id="tenhp">Lập trình C++</Col>
+            <Col id="namhoc_hocky">2023-2024 Kỳ II</Col>
+            <Col id="diem_tong">9.2</Col>
+          </Row>
+          <Row>
+            <Col id="stt">4</Col>
+            <Col id="mahp">PHI1004</Col>
+            <Col id="tenhp">Lịch sử Đảng Cộng sản VN</Col>
+            <Col id="namhoc_hocky">2023-2024 Kỳ II</Col>
+            <Col id="diem_tong">9.5</Col>
+          </Row>
+          <Row>
+            <Col id="stt">5</Col>
+            <Col id="mahp">INT2001</Col>
+            <Col id="tenhp">Cơ sở dữ liệu</Col>
+            <Col id="namhoc_hocky">2023-2024 Kỳ II</Col>
+            <Col id="diem_tong">9.5</Col>
+          </Row>
+          <Row>
+            <Col id="stt">6</Col>
+            <Col id="mahp">INT3012</Col>
+            <Col id="tenhp">Phân tích hệ thống thông tin</Col>
+            <Col id="namhoc_hocky">2024-2025 Kỳ I</Col>
+            <Col id="diem_tong">8.0</Col>
+          </Row>
+          <Row>
+            <Col id="stt">7</Col>
+            <Col id="mahp">MAT1092</Col>
+            <Col id="tenhp">Giải tích 1</Col>
+            <Col id="namhoc_hocky">2024-2025 Kỳ I</Col>
+            <Col id="diem_tong">6.8</Col>
+          </Row>
+          <Row>
+            <Col id="stt">8</Col>
+            <Col id="mahp">INT3040</Col>
+            <Col id="tenhp">Lập trình Web nâng cao</Col>
+            <Col id="namhoc_hocky">2024-2025 Kỳ II</Col>
+            <Col id="diem_tong">9.0</Col>
+          </Row>
         </Rows>
       </Dataset>
-
       <!-- Dataset chi tiết điểm cho popup (map từ /getGradeDetail) -->
       <Dataset id="ds_chitiet">
         <ColumnInfo>
           <Column id="thanh_phan" type="STRING" size="100"/>
-          <Column id="trong_so"   type="STRING" size="10"/>
-          <Column id="diem"       type="FLOAT"/>
+          <Column id="trong_so" type="STRING" size="10"/>
+          <Column id="diem" type="FLOAT"/>
         </ColumnInfo>
       </Dataset>
-
     </Objects>
-
     <Layouts>
       <Layout height="720" width="1280">
-
-        <!-- ============================================================
-             HEADER  left=0  top=0  w=1280  h=55
-        ============================================================ -->
-        <Div id="div_header" left="0" top="0" width="1280" height="55" background="#1e3a5f">
-          <Layouts><Layout>
-            <Static id="stc_logo"   left="10"   top="8"  width="38"  height="38"
-                    background="#3d7bd4" borderRadius="19"
-                    text="C" font="bold 18px Arial" color="white" textAlign="center"/>
-            <Static id="stc_title"  left="60"   top="10" width="1100" height="35"
-                    text="HỆ THỐNG ĐĂNG KÝ MÔN HỌC - ĐẠI HỌC CÔNG NGHỆ"
-                    font="bold 16px Arial" color="white" textAlign="left"/>
-            <Static id="stc_bell"   left="1185" top="10" width="35"  height="35"
-                    text="&#128276;" font="20px Arial" color="white" textAlign="center"/>
-            <Static id="stc_avatar" left="1230" top="10" width="35"  height="35"
-                    background="#3d7bd4" borderRadius="17"
-                    text="A" font="bold 14px Arial" color="white" textAlign="center"/>
-          </Layout></Layouts>
+        <Div id="div_header" left="0" top="0" right="0" height="55" background="#1e3a5f">
+          <Layouts>
+            <Layout>
+              <Static id="stc_logo" left="10" top="8" width="38" height="38" background="#3d7bd4" borderRadius="19" text="C" font="bold 18px Arial" color="white" textAlign="center"/>
+              <Static id="stc_title" left="60" top="10" width="800" height="35" text="HỆ THỐNG ĐĂNG KÝ MÔN HỌC - ĐẠI HỌC CÔNG NGHỆ" font="bold 16px Arial" color="white" textAlign="left"/>
+              <Static id="stc_bell" top="10" right="60" width="35" height="35" text="🔔" font="20px Arial" color="white" textAlign="center"/>
+              <Static id="stc_avatar" top="10" right="15" width="35" height="35" background="#3d7bd4" borderRadius="17" text="A" font="bold 14px Arial" color="white" textAlign="center"/>
+            </Layout>
+          </Layouts>
         </Div>
-
         <!-- ============================================================
              INFO BAR  left=0  top=55  w=1280  h=40
         ============================================================ -->
-        <Div id="div_infobar" left="0" top="55" width="1280" height="40" background="#e8f5e9">
-          <Layouts><Layout>
-            <Static id="stc_greeting" left="15"  top="10" width="550" height="22"
-                    text="Chào sinh viên: Nguyễn Văn A (Mã số: 21020001)"
-                    font="bold 13px Arial" color="#1b5e20"/>
-            <Static id="stc_hocky"    left="870" top="10" width="400" height="22"
-                    text="Học kỳ: Học kỳ II - Năm học 2023-2024"
-                    font="13px Arial" color="#1b5e20" textAlign="right"/>
-          </Layout></Layouts>
+        <Div id="div_infobar" left="0" top="55" right="0" height="40" background="#e8f5e9">
+          <Layouts>
+            <Layout>
+              <Static id="stc_greeting" left="15" top="10" width="550" height="22" text="Chào sinh viên: Nguyễn Văn A (Mã số: 21020001)" font="bold 13px Arial" color="#1b5e20"/>
+              <Static id="stc_hocky" top="10" right="15" width="400" height="22" text="Học kỳ: Học kỳ II - Năm học 2023-2024" font="13px Arial" color="#1b5e20" textAlign="right"/>
+            </Layout>
+          </Layouts>
         </Div>
-
         <!-- ============================================================
              MAIN CONTENT  left=0  top=95  w=1280  h=585
              Chỉ có 1 danh sách môn học (full width)
         ============================================================ -->
-        <Div id="div_content" left="0" top="95" width="1280" height="585" background="white">
-          <Layouts><Layout>
-
-            <Static id="stc_title_main" left="20" top="12" width="700" height="28"
-                    text="DANH SÁCH MÔN HỌC ĐÃ CÓ ĐIỂM"
-                    font="bold 14px Arial" color="#1e3a5f" textAlign="left"/>
-
-            <!-- Grid: STT(55)+MãHP(120)+TênHP(570)+NămHọcHọcKỳ(220)+ĐiểmTổng(165)+ChiTiết(110) = 1240 -->
-            <Grid id="grd_diem" left="20" top="48" width="1240" height="527"
-                  dataset="ds_diem" oncellclick="grd_diem_oncellclick">
-              <Formats>
-                <Format id="default">
-                  <Columns>
-                    <Column size="55"/>
-                    <Column size="120"/>
-                    <Column size="570"/>
-                    <Column size="220"/>
-                    <Column size="165"/>
-                    <Column size="110"/>
-                  </Columns>
-                  <Rows>
-                    <Row size="28" band="head"/>
-                    <Row size="32" band="body"/>
-                  </Rows>
-                  <Band id="head">
-                    <Cell row="0" col="0" text="STT"             font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                    <Cell row="0" col="1" text="Mã HP"           font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                    <Cell row="0" col="2" text="Tên HP"          font="bold 12px Arial" color="#333333" textAlign="left"   background="#f4f6fb" border="1px solid #dde3ec" padding="0px 0px 0px 8px"/>
-                    <Cell row="0" col="3" text="Năm Học/Học Kỳ" font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                    <Cell row="0" col="4" text="Điểm Tổng"       font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                    <Cell row="0" col="5" text="Chi tiết"        font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                  </Band>
-                  <Band id="body">
-                    <Cell row="0" col="0" text="bind:stt"          font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
-                    <Cell row="0" col="1" text="bind:mahp"         font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
-                    <Cell row="0" col="2" text="bind:tenhp"        font="12px Arial" color="#333333" textAlign="left"   border="1px solid #eef0f5" padding="0px 0px 0px 8px"/>
-                    <Cell row="0" col="3" text="bind:namhoc_hocky" font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
-                    <Cell row="0" col="4" text="bind:diem_tong"    font="bold 12px Arial" color="#1e3a5f" textAlign="center" border="1px solid #eef0f5"/>
-                    <Cell row="0" col="5" text="Chi tiết" edittype="button"
-                          font="12px Arial" color="#1e3a5f" textAlign="center"
-                          border="1px solid #b0c4de" background="#f0f4ff"/>
-                  </Band>
-                </Format>
-              </Formats>
-            </Grid>
-
-          </Layout></Layouts>
+        <Div id="div_content" left="0" top="95" right="0" bottom="40" background="white">
+          <Layouts>
+            <Layout>
+              <Static id="stc_title_main" left="20" top="12" width="700" height="28" text="DANH SÁCH MÔN HỌC ĐÃ CÓ ĐIỂM" font="bold 14px Arial" color="#1e3a5f" textAlign="left"/>
+              <Grid id="grd_diem" left="20" top="48" right="20" bottom="20" dataset="ds_diem" oncellclick="grd_diem_oncellclick" binddataset="ds_diem" autofittype="col">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="55"/>
+                      <Column size="120"/>
+                      <Column size="570"/>
+                      <Column size="220"/>
+                      <Column size="165"/>
+                      <Column size="110"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="28" band="head"/>
+                      <Row size="32" band="body"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell row="0" col="0" text="STT" font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
+                      <Cell row="0" col="1" text="Mã HP" font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
+                      <Cell row="0" col="2" text="Tên HP" font="bold 12px Arial" color="#333333" textAlign="left" background="#f4f6fb" border="1px solid #dde3ec" padding="0px 0px 0px 8px"/>
+                      <Cell row="0" col="3" text="Năm Học/Học Kỳ" font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
+                      <Cell row="0" col="4" text="Điểm Tổng" font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
+                      <Cell row="0" col="5" text="Chi tiết" font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell row="0" col="0" text="bind:stt" font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
+                      <Cell row="0" col="1" text="bind:mahp" font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
+                      <Cell row="0" col="2" text="bind:tenhp" font="12px Arial" color="#333333" textAlign="left" border="1px solid #eef0f5" padding="0px 0px 0px 8px"/>
+                      <Cell row="0" col="3" text="bind:namhoc_hocky" font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
+                      <Cell row="0" col="4" text="bind:diem_tong" font="bold 12px Arial" color="#1e3a5f" textAlign="center" border="1px solid #eef0f5"/>
+                      <Cell row="0" col="5" text="Chi tiết" edittype="button" font="12px Arial" color="#1e3a5f" textAlign="center" border="1px solid #b0c4de" background="#f0f4ff"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
         </Div>
-
-        <!-- ============================================================
-             FOOTER  left=0  top=680  w=1280  h=40
-        ============================================================ -->
-        <Div id="div_footer" left="0" top="680" width="1280" height="40" background="#f5f6fa">
-          <Layouts><Layout>
-            <Static id="stc_footer" left="0" top="10" width="1280" height="22"
-                    text="&#169; 2024 Trung tâm Công nghệ Thông tin - DHCN"
-                    font="12px Arial" color="#888888" textAlign="center"/>
-          </Layout></Layouts>
+        <Div id="div_popup" left="280" top="120" width="720" height="400" background="white" visible="false" border="1px solid #aaaaaa">
+          <Layouts>
+            <Layout>
+              <Static id="stc_popup_header" left="0" top="0" width="720" height="45" background="#1e3a5f" text="CHI TIẾT KẾT QUẢ MÔN HỌC" font="bold 13px Arial" color="white" textAlign="center"/>
+              <Static id="stc_popup_mahp_tenhp" left="20" top="56" width="680" height="22" text="[Mã HP] - [Tên HP]" font="bold 13px Arial" color="#1e3a5f"/>
+              <Static id="stc_popup_sotc" left="20" top="82" width="200" height="20" text="Số TC: 3" font="13px Arial" color="#555555"/>
+              <Static id="stc_sep1" left="15" top="108" width="690" height="1" background="#dddddd"/>
+              <Grid id="grd_chitiet" left="20" top="114" width="680" height="160" dataset="ds_chitiet" binddataset="ds_chitiet" autofittype="col">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="360"/>
+                      <Column size="160"/>
+                      <Column size="160"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="28" band="head"/>
+                      <Row size="35" band="body"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell row="0" col="0" text="Thành phần điểm" font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
+                      <Cell row="0" col="1" text="Trọng số" font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
+                      <Cell row="0" col="2" text="Điểm" font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell row="0" col="0" text="bind:thanh_phan" font="12px Arial" color="#333333" textAlign="left" border="1px solid #eef0f5" padding="0px 0px 0px 10px"/>
+                      <Cell row="0" col="1" text="bind:trong_so" font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
+                      <Cell row="0" col="2" text="bind:diem" font="bold 12px Arial" color="#1e3a5f" textAlign="center" border="1px solid #eef0f5"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="stc_sep2" left="15" top="280" width="690" height="1" background="#dddddd"/>
+              <Static id="stc_dtk_label" left="20" top="290" width="430" height="26" text="Điểm Tổng Kết" font="bold 13px Arial" color="#333333"/>
+              <Static id="stc_dtk_val" left="540" top="290" width="80" height="26" text="9.2" font="bold 14px Arial" color="#1e3a5f" textAlign="center"/>
+              <Static id="stc_xl_label" left="20" top="318" width="430" height="24" text="Xếp loại" font="13px Arial" color="#333333"/>
+              <Static id="stc_xl_val" left="540" top="318" width="80" height="24" text="Xuất sắc" font="13px Arial" color="#2e7d32" textAlign="center"/>
+              <Button id="btn_in_bangdiem" left="430" top="355" width="140" height="34" text="In bảng điểm" font="12px Arial" color="#1e3a5f" background="white" border="1px solid #1e3a5f" onclick="btn_in_bangdiem_onclick"/>
+              <Button id="btn_dong" left="585" top="355" width="90" height="34" text="Đóng" font="bold 12px Arial" color="white" background="#e53935" onclick="btn_dong_onclick"/>
+            </Layout>
+          </Layouts>
         </Div>
-
-        <!-- ============================================================
-             POPUP CHI TIẾT KẾT QUẢ MÔN HỌC
-             Ẩn mặc định — hiện khi click nút Chi tiết trong grid
-             Căn giữa form: left=(1280-720)/2=280  top=120  w=720  h=400
-        ============================================================ -->
-        <Div id="div_popup" left="280" top="120" width="720" height="400"
-             background="white" visible="false" border="1px solid #aaaaaa">
-          <Layouts><Layout>
-
-            <!-- Title bar (cập nhật động bằng script) -->
-            <Static id="stc_popup_header"
-                    left="0" top="0" width="720" height="45"
-                    background="#1e3a5f"
-                    text="CHI TIẾT KẾT QUẢ MÔN HỌC"
-                    font="bold 13px Arial" color="white" textAlign="center"/>
-
-            <!-- Tên môn & số tín chỉ -->
-            <Static id="stc_popup_mahp_tenhp"
-                    left="20" top="56" width="680" height="22"
-                    text="[Mã HP] - [Tên HP]"
-                    font="bold 13px Arial" color="#1e3a5f"/>
-            <Static id="stc_popup_sotc"
-                    left="20" top="82" width="200" height="20"
-                    text="Số TC: 3"
-                    font="13px Arial" color="#555555"/>
-
-            <!-- Đường kẻ ngang -->
-            <Static id="stc_sep1" left="15" top="108" width="690" height="1" background="#dddddd"/>
-
-            <!-- Grid chi tiết điểm: 360+160+160=680 -->
-            <Grid id="grd_chitiet" left="20" top="114" width="680" height="160"
-                  dataset="ds_chitiet">
-              <Formats>
-                <Format id="default">
-                  <Columns>
-                    <Column size="360"/>
-                    <Column size="160"/>
-                    <Column size="160"/>
-                  </Columns>
-                  <Rows>
-                    <Row size="28" band="head"/>
-                    <Row size="33" band="body"/>
-                  </Rows>
-                  <Band id="head">
-                    <Cell row="0" col="0" text="Thành phần điểm" font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                    <Cell row="0" col="1" text="Trọng số"        font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                    <Cell row="0" col="2" text="Điểm"            font="bold 12px Arial" color="#333333" textAlign="center" background="#f4f6fb" border="1px solid #dde3ec"/>
-                  </Band>
-                  <Band id="body">
-                    <Cell row="0" col="0" text="bind:thanh_phan" font="12px Arial" color="#333333" textAlign="left"   border="1px solid #eef0f5" padding="0px 0px 0px 10px"/>
-                    <Cell row="0" col="1" text="bind:trong_so"   font="12px Arial" color="#333333" textAlign="center" border="1px solid #eef0f5"/>
-                    <Cell row="0" col="2" text="bind:diem"       font="bold 12px Arial" color="#1e3a5f" textAlign="center" border="1px solid #eef0f5"/>
-                  </Band>
-                </Format>
-              </Formats>
-            </Grid>
-
-            <!-- Đường kẻ ngang -->
-            <Static id="stc_sep2" left="15" top="280" width="690" height="1" background="#dddddd"/>
-
-            <!-- Tổng kết -->
-            <Static id="stc_dtk_label" left="20"  top="290" width="430" height="26"
-                    text="Điểm Tổng Kết" font="bold 13px Arial" color="#333333"/>
-            <Static id="stc_dtk_val"   left="540" top="290" width="80"  height="26"
-                    text="9.2" font="bold 14px Arial" color="#1e3a5f" textAlign="center"/>
-
-            <Static id="stc_xl_label"  left="20"  top="318" width="430" height="24"
-                    text="Xếp loại" font="13px Arial" color="#333333"/>
-            <Static id="stc_xl_val"    left="540" top="318" width="80"  height="24"
-                    text="Xuất sắc" font="13px Arial" color="#2e7d32" textAlign="center"/>
-
-            <!-- Nút hành động -->
-            <Button id="btn_in_bangdiem"
-                    left="430" top="355" width="140" height="34"
-                    text="In bảng điểm"
-                    font="12px Arial" color="#1e3a5f"
-                    background="white" border="1px solid #1e3a5f"
-                    onclick="btn_in_bangdiem_onclick"/>
-            <Button id="btn_dong"
-                    left="585" top="355" width="90"  height="34"
-                    text="Đóng"
-                    font="bold 12px Arial" color="white"
-                    background="#e53935"
-                    onclick="btn_dong_onclick"/>
-
-          </Layout></Layouts>
-        </Div>
-
       </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[/* ============================================================
+   SỰ KIỆN LOAD TRANG
+   ============================================================ */
+this.QuanLyDiem_onload = function(obj:nexacro.Form, e:nexacro.LoadEventInfo)
+{
+    this.fn_call_api_grade();
+};
 
-    <Script type="xscript5.1"><![CDATA[
+/* ============================================================
+   1. GỌI API LẤY DỮ LIỆU ĐIỂM
+   ============================================================ */
+this.fn_call_api_grade = function()
+{
+    var p_this = this;
+    var xhr = new XMLHttpRequest();
+    // Thay link Mock của bạn vào đây
+    var url = "https://00f52d58-de09-471e-bb32-8244fde28147.mock.pstmn.io/getGradeList";
 
-      this.QuanLyDiem_onload = function(obj, e) {
-          // TODO: gọi service /getGradeList để nạp ds_diem
-      };
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            try {
+                var obj = JSON.parse(xhr.responseText);
+                p_this.fn_set_grade(obj.ds_grade_list);
+            } catch (e) {
+                alert("Lỗi parse JSON: " + e.message);
+            }
+        }
+    };
+    xhr.open("GET", url, true);
+    xhr.send();
+};
 
-      /*
-       * Mở popup chi tiết cho dòng nRow của ds_diem.
-       * Dữ liệu chi tiết: tạm dùng dummy data.
-       * Thực tế: gọi /getGradeDetail?ma_hp=<mahp> rồi bind vào ds_chitiet.
-       */
-      this.fn_showChiTiet = function(nRow) {
-          var sMaHP  = this.ds_diem.getColumn(nRow, "mahp");
-          var sTenHP = this.ds_diem.getColumn(nRow, "tenhp");
-          var fDiem  = this.ds_diem.getColumn(nRow, "diem_tong");
+/* ============================================================
+   2. ĐỔ DỮ LIỆU VÀO ds_diem (Khớp với XML của bạn)
+   ============================================================ */
+this.fn_set_grade = function(arr)
+{
+    var ds = this.ds_diem;
+    ds.set_enableevent(false);
+    ds.clearData();
+    
+    for (var i = 0; i < arr.length; i++) {
+        var nRow = ds.addRow();
+        var item = arr[i];
+        ds.setColumn(nRow, "stt", item.STT);
+        ds.setColumn(nRow, "mahp", item.MA_HP);
+        ds.setColumn(nRow, "tenhp", item.TEN_HP);
+        ds.setColumn(nRow, "namhoc_hocky", item.NAM_HOC_HOC_KY);
+        ds.setColumn(nRow, "diem_tong", item.DIEM_TONG);
+    }
+    ds.set_enableevent(true);
+};
 
-          this.div_popup.stc_popup_header.set_text(
-              "CHI TIẾT KẾT QUẢ MÔN HỌC: " + sMaHP + " - " + sTenHP);
-          this.div_popup.stc_popup_mahp_tenhp.set_text(sMaHP + " - " + sTenHP);
-          this.div_popup.stc_dtk_val.set_text(String(fDiem));
+/* ============================================================
+   3. CLICK NÚT CHI TIẾT (MỞ POPUP)
+   ============================================================ */
+this.grd_diem_oncellclick = function(obj:nexacro.Grid, e:nexacro.GridClickEventInfo)
+{
+    if (e.cell == 5 && e.row >= 0) {
+        var ds = this.ds_diem;
+        var sMaHP = ds.getColumn(e.row, "mahp");
+        var sTenHP = ds.getColumn(e.row, "tenhp");
+        var fDiem = ds.getColumn(e.row, "diem_tong");
 
-          // Dummy data chi tiết (thay bằng service call sau)
-          var ds = this.ds_chitiet;
-          ds.clearData();
-          var r;
-          r = ds.addRow(); ds.setColumn(r,"thanh_phan","Chuyên cần");       ds.setColumn(r,"trong_so","10%"); ds.setColumn(r,"diem",10.0);
-          r = ds.addRow(); ds.setColumn(r,"thanh_phan","Kiểm tra giữa kỳ"); ds.setColumn(r,"trong_so","20%"); ds.setColumn(r,"diem",8.5);
-          r = ds.addRow(); ds.setColumn(r,"thanh_phan","Bài tập lớn");      ds.setColumn(r,"trong_so","30%"); ds.setColumn(r,"diem",9.5);
-          r = ds.addRow(); ds.setColumn(r,"thanh_phan","Thi cuối kỳ");      ds.setColumn(r,"trong_so","40%"); ds.setColumn(r,"diem",9.0);
+        // Truy cập div_popup.form để lấy các thành phần bên trong
+        var pop = this.div_popup.form; 
 
-          this.div_popup.set_visible(true);
-      };
+        pop.stc_popup_header.set_text("CHI TIẾT: " + sMaHP);
+        pop.stc_popup_mahp_tenhp.set_text(sMaHP + " - " + sTenHP);
+        pop.stc_dtk_val.set_text(String(fDiem));
+        
+        var sXepLoai = (fDiem >= 8.5) ? "Xuất sắc" : (fDiem >= 7.0 ? "Khá" : "Trung bình");
+        pop.stc_xl_val.set_text(sXepLoai);
 
-      /* Click ô Chi tiết (col=5) trong grid chính */
-      this.grd_diem_oncellclick = function(obj, e) {
-          if (e.col == 5) {
-              this.fn_showChiTiet(e.row);
-          }
-      };
+        // Nạp data vào ds_chitiet
+        var dsChiTiet = this.ds_chitiet;
+        dsChiTiet.clearData();
+        
+        // Thêm 4 dòng dữ liệu mẫu
+        var arrData = [
+            {tp: "Chuyên cần", ts: "10%", d: 10.0},
+            {tp: "Giữa kỳ", ts: "20%", d: 8.5},
+            {tp: "Bài tập lớn", ts: "30%", d: 9.5},
+            {tp: "Thi cuối kỳ", ts: "40%", d: 9.0}
+        ];
+        
+        for(var i=0; i<arrData.length; i++){
+            var r = dsChiTiet.addRow();
+            dsChiTiet.setColumn(r, "thanh_phan", arrData[i].tp);
+            dsChiTiet.setColumn(r, "trong_so", arrData[i].ts);
+            dsChiTiet.setColumn(r, "diem", arrData[i].d);
+        }
+        
+        // --- ÉP GRID VẼ LẠI ---
+        pop.grd_chitiet.createFormat(); 
+        
+        this.div_popup.set_visible(true);
+        this.div_popup.bringToFront();
+    }
+};
 
-      this.btn_dong_onclick = function(obj, e) {
-          this.div_popup.set_visible(false);
-      };
+// Sửa cả nút Đóng để khớp với đường dẫn mới
+this.btn_dong_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
+{
+    // Nút Đóng nằm trong div_popup, nên obj là con của div_popup.form
+    this.div_popup.set_visible(false);
+};
 
-      this.btn_in_bangdiem_onclick = function(obj, e) {
-          trace("In bảng điểm: " + this.div_popup.stc_popup_mahp_tenhp.text);
-      };
-
-    ]]></Script>
+this.btn_dong_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
+{
+    this.div_popup.set_visible(false);
+};]]></Script>
   </Form>
 </FDL>
