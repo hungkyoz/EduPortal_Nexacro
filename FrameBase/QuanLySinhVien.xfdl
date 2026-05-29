@@ -227,7 +227,7 @@ this.fn_bindStudentProfile = function()
 };
 
 this.fn_updateAvatarUI = function()
-{H
+{
     var divRight;
     if (this.div_right) divRight = this.div_right;
     else if (this.div_scroll && this.div_scroll.form.div_right) divRight = this.div_scroll.form.div_right;   
